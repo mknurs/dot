@@ -344,7 +344,7 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>termite</command>
+        <command>xterm</command>
       </action>
     </keybind>
     <keybind key="W-w">
@@ -359,12 +359,12 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>termite -e 'nvim'</command>
+        <command>xterm -e 'nvim'</command>
       </action>
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>termite</command>
+        <command>xterm</command>
       </action>
     </keybind>
     <keybind key="W-F10">

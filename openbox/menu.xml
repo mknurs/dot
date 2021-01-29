@@ -60,45 +60,56 @@
   <separator/>
   <item label="Openbox config">
     <action name="Execute">
-      <command>termite -e "nvim ~/.config/openbox/rc.xml"</command>
+      <command>xterm -e "nvim ~/.config/openbox/rc.xml"</command>
     </action>
   </item>
   <item label="Openbox menu">
     <action name="Execute">
-      <command>termite -e "nvim ~/.config/openbox/menu.xml"</command>
+      <command>xterm -e "nvim ~/.config/openbox/menu.xml"</command>
     </action>
   </item>
   <item label="Openbox autostart">
     <action name="Execute">
-      <command>termite -e "nvim ~/.config/openbox/autostart"</command>
+      <command>xterm -e "nvim ~/.config/openbox/autostart"</command>
     </action>
   </item>
   <item label="Openbox environment">
     <action name="Execute">
-      <command>termite -e "nvim ~/.config/openbox/environment"</command>
+      <command>xterm -e "nvim ~/.config/openbox/environment"</command>
     </action>
   </item>
   <separator/>
   <item label="Tint2 config">
     <action name="Execute">
-      <command>termite -e "nvim ~/.config/tint2/tint2rc"</command>
+      <command>xterm -e "nvim ~/.config/tint2/tint2rc"</command>
     </action>
   </item>
   <separator/>
-  <item label=".xinitrc">
+  <item label="Nvim config">
     <action name="Execute">
-	<command>termite -e "nvim ~/.config/X11/xinitrc"</command>
+      <command>xterm -e "nvim ~/.config/nvim/init.vim"</command>
     </action>
   </item>
-  <item label=".xsettingsd">
+  <separator/>
+  <item label="xinitrc">
     <action name="Execute">
-	<command>termite -e "nvim ~/.config/xsettingsd"</command>
+	<command>xterm -e "nvim ~/.config/X11/xinitrc"</command>
+    </action>
+  </item>
+  <item label="Xresources">
+    <action name="Execute">
+	<command>xterm -e "nvim ~/.config/X11/Xresources"</command>
+    </action>
+  </item>
+  <item label="xsettingsd">
+    <action name="Execute">
+	<command>xterm -e "nvim ~/.config/xsettingsd"</command>
     </action>
   </item>
   <separator/>
   <item label="Fish config">
     <action name="Execute">
-      <command>termite -e "nvim ~/.config/fish/config.fish"</command>
+      <command>xterm -e "nvim ~/.config/fish/config.fish"</command>
     </action>
   </item>
 </menu>
@@ -131,9 +142,9 @@
   </item>
 </menu>
 <menu id="root-menu" label="Openbox 3">
-	<item label="Terminal (termite)">
+	<item label="Terminal (xterm)">
 		<action name="Execute">
-      <command>termite</command>
+      <command>xterm</command>
 		</action>
 	</item>
 	<item label="File Manager (pcmanfm)">
@@ -148,7 +159,7 @@
   </item>
   <item label="Editor (nvim)">
     <action name="Execute">
-      <command>termite -e "nvim"</command>
+      <command>xterm -e "nvim"</command>
     </action>
   </item>
   <separator/>
