@@ -1,3 +1,8 @@
+" plugins
+call plug#begin()
+	Plug 'preservim/nerdtree'
+call plug#end()
+
 " line numbering
 set number
 
