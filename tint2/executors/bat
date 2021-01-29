@@ -1,0 +1,13 @@
+#!/bin/bash
+
+percent=$(acpi | grep -oP "[0-9]*%")
+charge=$(acpi | grep -oP "(?<=: ).*?(?=, )")
+
+if [ "$charge" == "Charging" ]
+then
+	power="[+]"
+else
+	power="[$(acpi | grep -oP '\d+:\d+')]"
+fi
+
+echo "$percent $power"

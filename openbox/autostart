@@ -1,0 +1,5 @@
+nitrogen --restore &
+lxpolkit &
+tint2 -c ~/.config/tint2/tint2rc &
+dunst &
+redshift &

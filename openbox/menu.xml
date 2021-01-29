@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu>
+<menu id="apps-menu" label="Applications">
+  <item label="Thunderbird">
+    <action name="Execute">
+      <command>thunderbird</command>
+    </action>
+  </item>
+  <item label="Nextcloud client">
+    <action name="Execute">
+      <command>nextcloud</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Xarchiver">
+    <action name="Execute">
+      <command>xarchiver</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Viewnior">
+    <action name="Execute">
+      <command>viewnior</command>
+    </action>
+  </item>
+  <item label="Gimp">
+    <action name="Execute">
+      <command>gimp</command>
+    </action>
+  </item>
+  <item label="Inkscape">
+    <action name="Execute">
+      <command>inkscape</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Libreoffice Writer">
+    <action name="Execute">
+      <command>lowriter</command>
+    </action>
+  </item>
+  <item label="Libreoffice Calc">
+    <action name="Execute">
+      <command>localc</command>
+    </action>
+  </item>
+  <item label="Libreoffice Impress">
+    <action name="Execute">
+      <command>loimpress</command>
+    </action>
+  </item>
+</menu>
+<menu id="config-menu" label="Config">
+  <item label="./config">
+    <action name="Execute">
+      <command>pcmanfm ~/.config</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Openbox config">
+    <action name="Execute">
+      <command>termite -e "nvim ~/.config/openbox/rc.xml"</command>
+    </action>
+  </item>
+  <item label="Openbox menu">
+    <action name="Execute">
+      <command>termite -e "nvim ~/.config/openbox/menu.xml"</command>
+    </action>
+  </item>
+  <item label="Openbox autostart">
+    <action name="Execute">
+      <command>termite -e "nvim ~/.config/openbox/autostart"</command>
+    </action>
+  </item>
+  <item label="Openbox environment">
+    <action name="Execute">
+      <command>termite -e "nvim ~/.config/openbox/environment"</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Tint2 config">
+    <action name="Execute">
+      <command>termite -e "nvim ~/.config/tint2/tint2rc"</command>
+    </action>
+  </item>
+  <separator/>
+  <item label=".xinitrc">
+    <action name="Execute">
+	<command>termite -e "nvim ~/.config/X11/xinitrc"</command>
+    </action>
+  </item>
+  <item label=".xsettingsd">
+    <action name="Execute">
+	<command>termite -e "nvim ~/.config/xsettingsd"</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Fish config">
+    <action name="Execute">
+      <command>termite -e "nvim ~/.config/fish/config.fish"</command>
+    </action>
+  </item>
+</menu>
+<menu id="exit-menu" label="Exit">
+  <item label="Exit openbox">
+    <action name="Execute">
+      <command>openbox --exit</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Suspend">
+    <action name="Execute">
+      <command>suspend</command>
+    </action>
+  </item>
+  <item label="Hibernate">
+    <action name="Execute">
+      <command>hibernate</command>
+    </action>
+  </item>
+  <item label="Reboot">
+    <action name="Execute">
+      <command>reboot</command>
+    </action>
+  </item>
+  <item label="Poweroff">
+    <action name="Execute">
+      <command>poweroff</command>
+    </action>
+  </item>
+</menu>
+<menu id="root-menu" label="Openbox 3">
+	<item label="Terminal (termite)">
+		<action name="Execute">
+      <command>termite</command>
+		</action>
+	</item>
+	<item label="File Manager (pcmanfm)">
+		<action name="Execute">
+			<command>pcmanfm</command>
+		</action>
+	</item>
+	<item label="Web Browser (firefox)">
+		<action name="Execute">
+			<command>firefox</command>
+		</action>
+  </item>
+  <item label="Editor (nvim)">
+    <action name="Execute">
+      <command>termite -e "nvim"</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Screenshot (scrot)">
+    <action name="Execute">
+      <command>scrot ~/Pictures/screenshots/%Y%m%d%T-screenshot.png</command>
+    </action>
+  </item>
+  <separator/>
+  <item label="Mount kontrakurs">
+    <action name="Execute">
+      <command>sshfs mkn@kontrakurs.org:/var/www/html/kontrakurs /home/mkn/Documents/kontrakurs</command>
+    </action>
+  </item>
+  <separator/>
+  <menu id="apps-menu"/>
+	<separator/>
+  <menu id="config-menu"/>
+	<separator/>
+  <menu id="exit-menu"/>
+</menu>
+
+</openbox_menu>

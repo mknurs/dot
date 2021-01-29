@@ -1,0 +1,6 @@
+#!/bin/bash
+
+vol=$(amixer sget Master | grep -oP "(?<=\[).*%(?=\])")
+master=$(amixer sget Master | grep -oP "\[o.*\]")
+
+echo "$vol $master"
