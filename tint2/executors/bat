@@ -6,8 +6,11 @@ charge=$(acpi | grep -oP "(?<=: ).*?(?=, )")
 if [ "$charge" == "Charging" ]
 then
 	power="[+]"
-else
+elif [ "$charge" == "Discharging" ]
+then
 	power="[$(acpi | grep -oP '\d+:\d+')]"
+else
+	power="[0]"
 fi
 
 echo "$percent $power"
