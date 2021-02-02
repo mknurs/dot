@@ -1,0 +1,67 @@
+!
+!XTerm
+!
+
+!Term environmental variable
+XTerm.termName: xterm-256color
+
+!UTF-8
+XTerm.vt100.locale: true
+
+!Fix the backspace key
+!XTerm.vt100.backarrowKey: false
+!XTerm.ttyModes: erase ^?
+
+!Scrolling
+XTerm.vt100.saveLines: 4096
+
+!Clipboard
+XTerm.vt100.translations: #override \n\
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+!Border
+XTerm*BorderWidth: 15
+
+!Font
+*renderFont: true
+*faceName: DejaVu Mono
+*faceSize: 10
+
+!Colors
+! special
+*.foreground:   #eeeeee
+*.background:   #333333
+*.cursorColor:  #eeeeee
+
+! black
+*.color0:       #1c1c1c
+*.color8:       #444444
+
+! red
+*.color1:       #af5f5f
+*.color9:       #ff8700
+
+! green
+*.color2:       #5f875f
+*.color10:      #87af87
+
+! yellow
+*.color3:       #87875f
+*.color11:      #ffffaf
+
+! blue
+*.color4:       #5f87af
+*.color12:      #87afd7
+
+! magenta
+*.color5:       #5f5f87
+*.color13:      #8787af
+
+! cyan
+*.color6:       #5f8787
+*.color14:      #5fafaf
+
+! white
+*.color7:       #6c6c6c
+*.color15:      #ffffff
