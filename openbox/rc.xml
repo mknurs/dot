@@ -411,7 +411,7 @@
     </keybind>
     <keybind key="A-space">
       <action name="Execute">
-        <command>rofi -show run</command>
+        <command>rofi -show drun</command>
       </action>
     </keybind>
   </keyboard>

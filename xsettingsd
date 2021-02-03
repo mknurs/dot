@@ -5,3 +5,4 @@ Xft/RGBA "rgb"
 
 Net/IconThemeName "Numix"
 Net/ThemeName "Adwaita"
+Gtk/FontName "DejaVu Sans 10"
