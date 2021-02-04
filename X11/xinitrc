@@ -3,9 +3,5 @@
 # load Xresources
 [[ -f $HOME/.config/X11/Xresources ]] && xrdb -merge -I$HOME $HOME/.config/X11/Xresources
 
-setxkbmap si &
-xset -dpms &
-xset s off &
-xsettingsd -c $HOME/.config/xsettingsd &
-picom &
+# Openbox
 exec openbox-session

@@ -1,7 +1,7 @@
 # startx at login
 if status is-login
 	if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-		exec startx "$HOME/.config/X11/xinitrc" -- -keeptty
+		exec startx "$HOME/.config/X11/xinitrc"
 	end
 end
 

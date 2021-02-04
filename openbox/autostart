@@ -1,5 +1,27 @@
+# Set keymap
+setxkbmap si &
+
+# Screensaver [off]
+xset -dpms &
+xset s off &
+
+# Xsettingsd
+xsettingsd -c $HOME/.config/xsettingsd &
+
+# Compositor
+picom -b &
+
+# Desktop background
 nitrogen --restore &
-lxpolkit &
+
+# Panel
 tint2 -c ~/.config/tint2/tint2rc &
+
+# Notifications
 dunst &
+
+# Policy kit
+lxpolkit &
+
+# Screen temperature
 redshift &
