@@ -1,5 +1,5 @@
 #!/bin/bash
 
-ssid=$(connmanctl services | grep -oP "(?<=..O.).*?(?=  )")
+ssid=$(connmanctl services | grep -oP "(?<=..O ).*?(?=  )")
 
 echo "[$ssid]"
