@@ -1,0 +1,208 @@
+# Window geometry
+border.width: 1
+padding.width: 0
+
+window.client.padding.width: 0
+window.client.padding.height: 0
+window.handle.width: 0
+
+# Window title justification
+window.label.text.justify: Center
+
+# Active window
+
+window.active.title.bg: Solid Flat
+window.active.title.bg.color: #333
+
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #eee
+
+window.active.border.color: #333
+
+
+# close
+window.active.button.close.unpressed.bg: Solid Flat
+window.active.button.close.unpressed.bg.color: #f21
+
+window.active.button.close.hover.bg: Solid Flat
+window.active.button.close.hover.bg.color: #f53
+
+window.active.button.close.pressed.bg: Solid Flat
+window.active.button.close.pressed.bg.color: #eee
+
+window.active.button.close.disabled.bg: Solid Flat
+window.active.button.close.disabled.bg.color: #f53
+
+window.active.button.close.toggled.unpressed.bg: Solid Flat
+window.active.button.close.toggled.unpressed.bg.color: #f53
+
+window.active.button.close.toggled.pressed.bg: Solid Flat
+window.active.button.close.toggled.pressed.bg.color: #eee
+
+window.active.button.close.toggled.hover.bg: Solid Flat
+window.active.button.close.toggled.hover.bg.color: #f53
+
+# max
+window.active.button.max.unpressed.bg: Solid Flat
+window.active.button.max.unpressed.bg.color: #f40
+
+window.active.button.max.hover.bg: Solid Flat
+window.active.button.max.hover.bg.color: #f80
+
+window.active.button.max.pressed.bg: Solid Flat
+window.active.button.max.pressed.bg.color: #eee
+
+window.active.button.max.disabled.bg: Solid Flat
+window.active.button.max.disabled.bg.color: #f80
+
+window.active.button.max.toggled.unpressed.bg: Solid Flat
+window.active.button.max.toggled.unpressed.bg.color: #f80
+
+window.active.button.max.toggled.pressed.bg: Solid Flat
+window.active.button.max.toggled.pressed.bg.color: #eee
+
+window.active.button.max.toggled.hover.bg: Solid Flat
+window.active.button.max.toggled.hover.bg.color: #f80
+
+# iconify
+window.active.button.iconify.unpressed.bg: Solid Flat
+window.active.button.iconify.unpressed.bg.color: #ff3
+
+window.active.button.iconify.hover.bg: Solid Flat
+window.active.button.iconify.hover.bg.color: #ff7
+
+window.active.button.iconify.pressed.bg: Solid Flat
+window.active.button.iconify.pressed.bg.color: #eee
+
+window.active.button.iconify.disabled.bg: Solid Flat
+window.active.button.iconify.disabled.bg.color: #ff7
+
+window.active.button.iconify.toggled.unpressed.bg: Solid Flat
+window.active.button.iconify.toggled.unpressed.bg.color: #ff7
+
+window.active.button.iconify.toggled.pressed.bg: Solid Flat
+window.active.button.iconify.toggled.pressed.bg.color: #eee
+
+window.active.button.iconify.toggled.hover.bg: Solid Flat
+window.active.button.iconify.toggled.hover.bg.color: #ff7
+
+# Inactive windows
+window.inactive.title.bg: Solid Flat
+window.inactive.title.bg.color: #333
+
+window.inactive.label.bg: Parentrelative
+window.inactive.label.text.color: #777
+
+window.inactive.border.color: #333
+
+# close
+window.inactive.button.close.unpressed.bg: Solid Flat
+window.inactive.button.close.unpressed.bg.color: #777
+
+window.inactive.button.close.hover.bg: Solid Flat
+window.inactive.button.close.hover.bg.color: #f53
+
+window.inactive.button.close.pressed.bg: Solid Flat
+window.inactive.button.close.pressed.bg.color: #eee
+
+window.inactive.button.close.disabled.bg: Solid Flat
+window.inactive.button.close.disabled.bg.color: #f53
+
+window.inactive.button.close.toggled.unpressed.bg: Solid Flat
+window.inactive.button.close.toggled.unpressed.bg.color: #777
+
+window.inactive.button.close.toggled.pressed.bg: Solid Flat
+window.inactive.button.close.toggled.pressed.bg.color: #eee
+
+window.inactive.button.close.toggled.hover.bg: Solid Flat
+window.inactive.button.close.toggled.hover.bg.color: #f53
+
+# max
+window.inactive.button.max.unpressed.bg: Solid Flat
+window.inactive.button.max.unpressed.bg.color: #777
+
+window.inactive.button.max.hover.bg: Solid Flat
+window.inactive.button.max.hover.bg.color: #f80
+
+window.inactive.button.max.pressed.bg: Solid Flat
+window.inactive.button.max.pressed.bg.color: #eee
+
+window.inactive.button.max.disabled.bg: Solid Flat
+window.inactive.button.max.disabled.bg.color: #f80
+
+window.inactive.button.max.toggled.unpressed.bg: Solid Flat
+window.inactive.button.max.toggled.unpressed.bg.color: #777
+
+window.inactive.button.max.toggled.pressed.bg: Solid Flat
+window.inactive.button.max.toggled.pressed.bg.color: #eee
+
+window.inactive.button.max.toggled.hover.bg: Solid Flat
+window.inactive.button.max.toggled.hover.bg.color: #f80
+
+# iconify
+window.inactive.button.iconify.unpressed.bg: Solid Flat
+window.inactive.button.iconify.unpressed.bg.color: #777
+
+window.inactive.button.iconify.hover.bg: Solid Flat
+window.inactive.button.iconify.hover.bg.color: #ff7
+
+window.inactive.button.iconify.pressed.bg: Solid Flat
+window.inactive.button.iconify.pressed.bg.color: #eee
+
+window.inactive.button.iconify.disabled.bg: Solid Flat
+window.inactive.button.iconify.disabled.bg.color: #ff7
+
+window.inactive.button.iconify.toggled.unpressed.bg: Solid Flat
+window.inactive.button.iconify.toggled.unpressed.bg.color: #777
+
+window.inactive.button.iconify.toggled.pressed.bg: Solid Flat
+window.inactive.button.iconify.toggled.pressed.bg.color: #eee
+
+window.inactive.button.iconify.toggled.hover.bg: Solid Flat
+window.inactive.button.iconify.toggled.hover.bg.color: #ff7
+
+# Menus
+menu.border.width: 0
+menu.overlap.x: 0
+menu.overlap.y: 0
+
+menu.title.bg: Solid Flat
+menu.title.bg.color: #333
+menu.title.text.color: #eee
+menu.title.text.justify: Left
+
+menu.separator.width: 0
+menu.separator.color: #eee
+menu.separator.width: 1
+menu.separator.padding.width: 3
+menu.separator.padding.height: 6
+
+menu.items.bg: Solid Flat
+menu.items.bg.color: #333
+menu.items.text.color: #eee
+menu.items.disabled.text.color: #777
+
+menu.items.active.bg: Solid Flat
+menu.items.active.bg.color: #eee
+menu.items.active.text.color: #333
+menu.items.active.disabled.text.color: #bbb
+
+# Osd
+osd.border.width: 0
+
+osd.bg: Solid Flat
+osd.bg.color: #333
+
+osd.active.bg: Solid Flat
+osd.active.bg.color: #eee
+
+osd.label.bg: Solid Flat
+osd.label.bg.color: #333
+osd.label.text.color: #eee
+
+osd.hilight.bg: Solid Flat
+osd.hilight.bg.color: #eee
+
+osd.unhilight.bg: Solid Flat Border
+osd.unhilight.bg.color: #333
+osd.unhilight.bg.border.color: #eee

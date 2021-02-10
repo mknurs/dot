@@ -3,5 +3,8 @@
 # load Xresources
 [[ -f $HOME/.config/X11/Xresources ]] && xrdb -merge -I$HOME $HOME/.config/X11/Xresources
 
-# Openbox
-exec openbox-session
+# Environment variables
+export QT_STYLE_OVERRIDE=Adwaita
+
+# Xmonad
+exec xmonad

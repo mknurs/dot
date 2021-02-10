@@ -1,0 +1,4 @@
+#define shade_width 1
+#define shade_height 1
+static unsigned char shade_bits[] = {
+    0xfe };

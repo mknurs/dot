@@ -1,0 +1,37 @@
+* {
+    border: 0;
+    spacing: 0;
+    height: 18px;
+    background-color: #333;
+    text-color: #eee;
+    font: "DejaVu Sans 10";
+}
+window {
+    anchor: north;
+    location: north;
+    width: 100%;
+}
+mainbox {
+    orientation: horizontal;
+    children: [ entry, listview ];
+}
+entry {
+    expand: false;
+    padding: 0 6px;
+    width: 72px;
+    background-color: #f80;
+    text-color: #333;
+}
+listview {
+    layout: horizontal;
+    lines: 100;
+}
+element {
+    padding: 0 6px 1px;
+}
+element selected {
+    background-color: #ff7;
+    text-color:       #333;
+    height: 30px;
+    expand: true;
+}
