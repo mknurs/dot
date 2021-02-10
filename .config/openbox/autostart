@@ -5,8 +5,11 @@ setxkbmap si &
 xset -dpms &
 xset s off &
 
+# Policy kit
+lxpolkit &
+
 # Xsettingsd
-xsettingsd -c $HOME/.config/xsettingsd &
+xsettingsd &
 
 # Compositor
 picom -b &
@@ -20,8 +23,6 @@ tint2 -c ~/.config/tint2/tint2rc &
 # Notifications
 dunst &
 
-# Policy kit
-lxpolkit &
 
 # Screen temperature
 redshift &

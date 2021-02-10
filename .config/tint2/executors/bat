@@ -1,16 +1,19 @@
 #!/bin/bash
 
-percent=$(acpi | awk "/Battery 0:/" | grep -oP "\d+%")
-charge=$(acpi | awk "/Battery 0:/" | grep -oP "(?<=: ).*?(?=, )")
+#adapter=$(acpi -a | awk '/Adapter 0:/ { print $3 }')
+percent=$(acpi -b | awk '/Battery 0:/ { print $4 }')
+#remaining=$(acpi -b | awk '/Battery 0:/ { print $5 }')
 
-if [ "$charge" == "Charging" ]
+#if [ "$adapter" == "on-line" ]
+#then
+#	status="+"
+#else
+#	status=$remaining
+#fi
+
+if [ "$percent" == "10%," ]
 then
-	power="[+]"
-elif [ "$charge" == "Discharging" ]
-then
-	power="[$(acpi | grep -oP '\d+:\d+')]"
-else
-	power="[0]"
+	notify-send -t 1000 -u critical -i battery-low "battery low"
 fi
 
-echo "$percent $power"
+echo "$percent"

@@ -1,5 +1,5 @@
 # Window geometry
-border.width: 1
+border.width: 0
 padding.width: 0
 
 window.client.padding.width: 0
@@ -22,69 +22,69 @@ window.active.border.color: #333
 
 # close
 window.active.button.close.unpressed.bg: Solid Flat
-window.active.button.close.unpressed.bg.color: #f21
+window.active.button.close.unpressed.bg.color: #f53
 
 window.active.button.close.hover.bg: Solid Flat
-window.active.button.close.hover.bg.color: #f53
+window.active.button.close.hover.bg.color: #ff8b6a
 
 window.active.button.close.pressed.bg: Solid Flat
 window.active.button.close.pressed.bg.color: #eee
 
 window.active.button.close.disabled.bg: Solid Flat
-window.active.button.close.disabled.bg.color: #f53
+window.active.button.close.disabled.bg.color: #ff8b6a
 
 window.active.button.close.toggled.unpressed.bg: Solid Flat
-window.active.button.close.toggled.unpressed.bg.color: #f53
+window.active.button.close.toggled.unpressed.bg.color: #ff8b6a
 
 window.active.button.close.toggled.pressed.bg: Solid Flat
 window.active.button.close.toggled.pressed.bg.color: #eee
 
 window.active.button.close.toggled.hover.bg: Solid Flat
-window.active.button.close.toggled.hover.bg.color: #f53
+window.active.button.close.toggled.hover.bg.color: #ff8b6a
 
 # max
 window.active.button.max.unpressed.bg: Solid Flat
-window.active.button.max.unpressed.bg.color: #f40
+window.active.button.max.unpressed.bg.color: #ff9f5f
 
 window.active.button.max.hover.bg: Solid Flat
-window.active.button.max.hover.bg.color: #f80
+window.active.button.max.hover.bg.color: #ffc494
 
 window.active.button.max.pressed.bg: Solid Flat
 window.active.button.max.pressed.bg.color: #eee
 
 window.active.button.max.disabled.bg: Solid Flat
-window.active.button.max.disabled.bg.color: #f80
+window.active.button.max.disabled.bg.color: #ffc494
 
 window.active.button.max.toggled.unpressed.bg: Solid Flat
-window.active.button.max.toggled.unpressed.bg.color: #f80
+window.active.button.max.toggled.unpressed.bg.color: #ffc494
 
 window.active.button.max.toggled.pressed.bg: Solid Flat
 window.active.button.max.toggled.pressed.bg.color: #eee
 
 window.active.button.max.toggled.hover.bg: Solid Flat
-window.active.button.max.toggled.hover.bg.color: #f80
+window.active.button.max.toggled.hover.bg.color: #ffc494
 
 # iconify
 window.active.button.iconify.unpressed.bg: Solid Flat
-window.active.button.iconify.unpressed.bg.color: #ff3
+window.active.button.iconify.unpressed.bg.color: #fff2b1
 
 window.active.button.iconify.hover.bg: Solid Flat
-window.active.button.iconify.hover.bg.color: #ff7
+window.active.button.iconify.hover.bg.color: #fff8d0
 
 window.active.button.iconify.pressed.bg: Solid Flat
 window.active.button.iconify.pressed.bg.color: #eee
 
 window.active.button.iconify.disabled.bg: Solid Flat
-window.active.button.iconify.disabled.bg.color: #ff7
+window.active.button.iconify.disabled.bg.color: #fff8d0
 
 window.active.button.iconify.toggled.unpressed.bg: Solid Flat
-window.active.button.iconify.toggled.unpressed.bg.color: #ff7
+window.active.button.iconify.toggled.unpressed.bg.color: #fff8d0
 
 window.active.button.iconify.toggled.pressed.bg: Solid Flat
 window.active.button.iconify.toggled.pressed.bg.color: #eee
 
 window.active.button.iconify.toggled.hover.bg: Solid Flat
-window.active.button.iconify.toggled.hover.bg.color: #ff7
+window.active.button.iconify.toggled.hover.bg.color: #fff8d0
 
 # Inactive windows
 window.inactive.title.bg: Solid Flat
