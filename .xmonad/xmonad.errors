@@ -1,0 +1,15 @@
+
+xmonad.hs:234:1: warning: [-Wtabs]
+    Tab character found here, and in 9 further locations.
+    Please use spaces instead.
+    |
+234 |         where fadeAmount = 0.90
+    | ^^^^^^^^
+
+xmonad.hs:289:12: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+    |
+289 | defaults = defaultConfig {
+    |            ^^^^^^^^^^^^^
