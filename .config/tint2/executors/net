@@ -1,4 +1,0 @@
-#!/bin/bash
-# Echoes the connected SSID.
-
-echo "$(iw wlan0 link | awk '/SSID/{print $2}')"
