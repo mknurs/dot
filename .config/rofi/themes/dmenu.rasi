@@ -19,7 +19,7 @@ entry {
     expand: false;
     padding: 0 6px;
     width: 72px;
-    background-color: #f80;
+    background-color: #ff9f5f;
     text-color: #333;
 }
 listview {
@@ -30,7 +30,7 @@ element {
     padding: 0 6px 1px;
 }
 element selected {
-    background-color: #ff7;
+    background-color: #fff2b1;
     text-color:       #333;
     height: 30px;
     expand: true;

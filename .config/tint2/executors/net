@@ -1,5 +1,4 @@
 #!/bin/bash
+# Echoes the connected SSID.
 
-ssid=$(connmanctl services | grep -oP "(?<=..O ).*?(?=  )")
-
-echo "[$ssid]"
+echo "$(iw wlan0 link | awk '/SSID/{print $2}')"

@@ -37,14 +37,17 @@
 [urgency_low]
     background = "#333"
     foreground = "#eee"
+    frame_color = "#fff2b1"
     timeout = 3
 
 [urgency_normal]
     background = "#333"
     foreground = "#eee"
+    frame_color = "#ff9f5f"
     timeout = 3
 
 [urgency_critical]
     background = "#333"
     foreground = "#eee"
+    frame_color = "#ff5533"
     timeout = 5
