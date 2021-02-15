@@ -404,14 +404,14 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
-    <keybind key="W-S-Escape">
-      <action name="ShowMenu">
-        <menu>exit-menu</menu>
+    <keybind key="W-Escape">
+      <action name="Execute">
+	      <command>~/.config/rofi/scripts/power.sh</command>
       </action>
     </keybind>
     <keybind key="A-space">
       <action name="Execute">
-        <command>rofi -show drun</command>
+	      <command>rofi -drun-display-format {name} -show drun</command>
       </action>
     </keybind>
   </keyboard>

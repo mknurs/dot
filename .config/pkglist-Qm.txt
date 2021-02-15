@@ -1,0 +1,10 @@
+adwaita-qt 1.2.0-2
+cups-xerox-b2xx 1.0-1
+factorio 1.1.19-1
+nerd-fonts-dejavu-complete 2.1.0-3
+numix-icon-theme-pack-git r7444-1
+otf-alegreya 2.008-2
+paru 1.2.2-2
+redshift-minimal 1.12-3
+thinkfan 1.2.1-3
+ttf-times-new-roman 2.0-3
