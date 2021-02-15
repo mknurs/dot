@@ -1,0 +1,28 @@
+/* Global properties section */
+* {
+	color: #eee;
+	background-color: #333;
+	font: "DejaVu Sans 10";
+	spacing: 0;
+	orientation: vertical;
+	layout: vertical;
+}
+
+/* layout */
+window {
+	location: south;
+	width: 100%;
+	height: calc(100% - 18px);
+	padding: 30% 40%;
+	children: [ listview ];
+}
+listview {
+	lines: 6;
+}
+element {
+	padding: 1px 6px;
+}
+element selected {
+	background-color: #eee;
+	text-color:       #333;
+}

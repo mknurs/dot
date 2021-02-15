@@ -1,0 +1,39 @@
+/* Global properties section */
+* {
+	color: #eee;
+	background-color: #333;
+	font: "DejaVu Sans 10";
+	spacing: 0;
+	orientation: vertical;
+	layout: vertical;
+}
+
+/* layout */
+window {
+	location: north;
+	y-offset: 18px;
+	width: 100%;
+	children: [ inputbar, listview ];
+}
+inputbar {
+	orientation: horizontal;
+	height: 18px;
+	children: [ entry ];
+}
+entry {
+	color: #333;
+	background-color: #eee;
+	padding: 0 6px;
+	placeholder: " ";
+}
+listview {
+	fixed-height: false;
+	padding: 0 0  0 36px;
+}
+element {
+	padding: 1px 6px;
+}
+element selected {
+	background-color: #eee;
+	color:       #333;
+}
