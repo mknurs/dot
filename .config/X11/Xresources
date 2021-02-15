@@ -17,13 +17,18 @@ XTerm.vt100.locale: true
 !Scrolling
 XTerm.vt100.saveLines: 4096
 
-!Clipboard
+!Keybindings
 XTerm.vt100.translations: #override \n\
 	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+	Ctrl <Key> minus: smaller-vt-font() \n\
+	Ctrl <Key> plus: larger-vt-font() \n\
 
 !Border
 XTerm*BorderWidth: 15
+
+!Resizing
+XTerm*allowWindowOps: true
 
 !Font
 *renderFont: true

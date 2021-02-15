@@ -323,12 +323,12 @@
     </keybind>-->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>xbacklight +2</command>
+        <command>xbacklight +5</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>xbacklight -2</command>
+        <command>xbacklight -5</command>
       </action>
     </keybind>
     <keybind key="Print">
@@ -404,6 +404,7 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
+    <!-- rofi menus -->
     <keybind key="W-Escape">
       <action name="Execute">
 	      <command>~/.config/rofi/scripts/power.sh</command>
@@ -412,6 +413,11 @@
     <keybind key="A-space">
       <action name="Execute">
 	      <command>rofi -drun-display-format {name} -show drun</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-F10">
+      <action name="Execute">
+	      <command>~/.config/rofi/scripts/config.sh</command>
       </action>
     </keybind>
   </keyboard>
@@ -666,7 +672,7 @@
       </mousebind>
     </context>
   </mouse>
-  <menu>
+<menu>
     <file>menu.xml</file>
     <hideDelay>400</hideDelay>
     <middle>no</middle>

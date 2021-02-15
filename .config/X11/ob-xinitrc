@@ -3,5 +3,7 @@
 # load Xresources
 [[ -f $HOME/.config/X11/Xresources ]] && xrdb -merge -I$HOME $HOME/.config/X11/Xresources
 
+# xsetroot
+xsetroot -solid "#333" & 
 # Openbox
 exec openbox-session
