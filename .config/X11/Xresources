@@ -42,33 +42,33 @@ XTerm*allowWindowOps: true
 *.cursorColor:  #eeeeee
 
 ! black
-*.color0:       #1c1c1c
-*.color8:       #444444
+*.color0:       #171717
+*.color8:       #404040
 
 ! red
-*.color1:       #af5f5f
-*.color9:       #ff8700
+*.color1:       #ff5533
+*.color9:       #ff8b6a
 
 ! green
-*.color2:       #5f875f
-*.color10:      #87af87
+*.color2:       #ff9f5f
+*.color10:      #ffc494
 
 ! yellow
-*.color3:       #87875f
-*.color11:      #ffffaf
+*.color3:       #fff2b1
+*.color11:      #fff8d0
 
 ! blue
-*.color4:       #5f87af
-*.color12:      #87afd7
+*.color4:       #335cff
+*.color12:      #6a91ff
 
 ! magenta
-*.color5:       #5f5f87
-*.color13:      #8787af
+*.color5:       #d48cb7
+*.color13:      #e6b7d4
 
 ! cyan
-*.color6:       #5f8787
-*.color14:      #5fafaf
+*.color6:       #b3d7ff
+*.color14:      #d1e8ff
 
 ! white
-*.color7:       #6c6c6c
-*.color15:      #ffffff
+*.color7:       #777777
+*.color15:      #dedede

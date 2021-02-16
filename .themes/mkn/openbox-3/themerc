@@ -12,12 +12,12 @@ window.label.text.justify: Center
 # Active window
 
 window.active.title.bg: Solid Flat
-window.active.title.bg.color: #333
+window.active.title.bg.color: #333333
 
 window.active.label.bg: Parentrelative
 window.active.label.text.color: #eee
 
-window.active.border.color: #333
+window.active.border.color: #333333
 
 
 # close
@@ -88,12 +88,12 @@ window.active.button.iconify.toggled.hover.bg.color: #fff8d0
 
 # Inactive windows
 window.inactive.title.bg: Solid Flat
-window.inactive.title.bg.color: #333
+window.inactive.title.bg.color: #333333
 
 window.inactive.label.bg: Parentrelative
 window.inactive.label.text.color: #777
 
-window.inactive.border.color: #333
+window.inactive.border.color: #333333
 
 # close
 window.inactive.button.close.unpressed.bg: Solid Flat
@@ -167,7 +167,7 @@ menu.overlap.x: 0
 menu.overlap.y: 0
 
 menu.title.bg: Solid Flat
-menu.title.bg.color: #333
+menu.title.bg.color: #333333
 menu.title.text.color: #eee
 menu.title.text.justify: Left
 
@@ -178,31 +178,31 @@ menu.separator.padding.width: 3
 menu.separator.padding.height: 6
 
 menu.items.bg: Solid Flat
-menu.items.bg.color: #333
+menu.items.bg.color: #333333
 menu.items.text.color: #eee
 menu.items.disabled.text.color: #777
 
 menu.items.active.bg: Solid Flat
 menu.items.active.bg.color: #eee
-menu.items.active.text.color: #333
+menu.items.active.text.color: #333333
 menu.items.active.disabled.text.color: #bbb
 
 # Osd
 osd.border.width: 0
 
 osd.bg: Solid Flat
-osd.bg.color: #333
+osd.bg.color: #333333
 
 osd.active.bg: Solid Flat
 osd.active.bg.color: #eee
 
 osd.label.bg: Solid Flat
-osd.label.bg.color: #333
+osd.label.bg.color: #333333
 osd.label.text.color: #eee
 
 osd.hilight.bg: Solid Flat
 osd.hilight.bg.color: #eee
 
 osd.unhilight.bg: Solid Flat Border
-osd.unhilight.bg.color: #333
+osd.unhilight.bg.color: #333333
 osd.unhilight.bg.border.color: #eee
