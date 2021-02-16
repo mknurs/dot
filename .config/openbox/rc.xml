@@ -415,7 +415,7 @@
 	      <command>rofi -drun-display-format {name} -show drun</command>
       </action>
     </keybind>
-    <keybind key="W-C-F10">
+    <keybind key="W-c">
       <action name="Execute">
 	      <command>~/.config/rofi/scripts/config.sh</command>
       </action>

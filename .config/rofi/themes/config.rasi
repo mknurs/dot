@@ -24,11 +24,9 @@ entry {
 	color: #333;
 	background-color: #eee;
 	padding: 0 6px;
-	placeholder: " ";
 }
 listview {
 	fixed-height: false;
-	padding: 0 0  0 36px;
 }
 element {
 	padding: 1px 6px;

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="72mm"
+   height="72mm"
+   viewBox="0 0 72 72"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <rect
+       style="fill:#333333;fill-opacity:1;stroke-width:0.264583"
+       id="rect833"
+       width="72"
+       height="24"
+       x="0"
+       y="0" />
+    <rect
+       style="fill:#ff8b6a;fill-opacity:1;stroke-width:0.187088"
+       id="rect835"
+       width="24"
+       height="12"
+       x="0"
+       y="24" />
+    <rect
+       style="fill:#ff5533;fill-opacity:1;stroke-width:0.187088"
+       id="rect835-3"
+       width="24"
+       height="12"
+       x="7.6293945e-06"
+       y="36" />
+    <rect
+       style="fill:#ffc494;fill-opacity:1;stroke-width:0.187088"
+       id="rect835-6"
+       width="24"
+       height="12"
+       x="24"
+       y="24" />
+    <rect
+       style="fill:#ff9f5f;fill-opacity:1;stroke-width:0.187088"
+       id="rect835-3-7"
+       width="24"
+       height="12"
+       x="24.000008"
+       y="35.999985" />
+    <rect
+       style="fill:#fff8d0;fill-opacity:1;stroke-width:0.187088"
+       id="rect835-5"
+       width="24"
+       height="12"
+       x="48.000008"
+       y="24" />
+    <rect
+       style="fill:#fff2b1;fill-opacity:1;stroke-width:0.187088"
+       id="rect835-3-3"
+       width="24"
+       height="12"
+       x="48.000015"
+       y="36" />
+    <rect
+       style="fill:#eeeeee;stroke-width:0.264583"
+       id="rect833-5"
+       width="72"
+       height="24"
+       x="1.5258789e-05"
+       y="47.999992" />
+  </g>
+</svg>

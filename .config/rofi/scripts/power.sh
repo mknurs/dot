@@ -9,7 +9,7 @@ elif [[ $chosen = "Poweroff" ]]; then
 elif [[ $chosen = "Reboot" ]]; then
 	reboot
 elif [[ $chosen = "Suspend" ]]; then
-	suspend
+	systemctl suspend
 elif [[ $chosen = "Hibernate" ]]; then
-	hibernate
+	systemctl hibernate
 fi
