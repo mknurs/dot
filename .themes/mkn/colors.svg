@@ -5,9 +5,9 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="132mm"
+   width="144mm"
    height="72mm"
-   viewBox="0 0 132 72"
+   viewBox="0 0 144 72"
    version="1.1"
    id="svg8">
   <defs
@@ -27,9 +27,9 @@
   <g
      id="layer1">
     <rect
-       style="fill:#333333;fill-opacity:1;stroke-width:0.358247"
+       style="fill:#333333;fill-opacity:1;stroke-width:0.374177"
        id="rect833"
-       width="132"
+       width="144"
        height="24"
        x="0"
        y="0" />
@@ -76,9 +76,9 @@
        x="48.000015"
        y="36" />
     <rect
-       style="fill:#eeeeee;stroke-width:0.358247"
+       style="fill:#eeeeee;stroke-width:0.374177"
        id="rect833-5"
-       width="132"
+       width="144"
        height="24"
        x="1.5258789e-05"
        y="47.999992" />
@@ -101,56 +101,70 @@
        id="rect835-5-3-7"
        width="12"
        height="12"
-       x="84"
-       y="24.000008" />
+       x="95.999992"
+       y="24.00001" />
     <rect
        style="fill:#335cff;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-6-5"
        width="12"
        height="12"
-       x="84.000008"
+       x="96"
        y="36" />
     <rect
        style="fill:#e6b7d4;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-3"
        width="12"
        height="12"
-       x="96.000008"
-       y="23.999998" />
+       x="108"
+       y="24" />
     <rect
        style="fill:#d48cb7;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-6-56"
        width="12"
        height="12"
-       x="96.000015"
-       y="35.999989" />
+       x="108.00001"
+       y="35.999992" />
     <rect
        style="fill:#d1e8ff;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-7-2"
        width="12"
        height="12"
-       x="108.00001"
-       y="23.999998" />
+       x="120"
+       y="24" />
     <rect
        style="fill:#b3d7ff;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-6-5-9"
        width="12"
        height="12"
-       x="108.00002"
+       x="120.00002"
        y="35.999992" />
     <rect
        style="fill:#777777;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-3-1"
        width="12"
        height="12"
-       x="120.00002"
+       x="132.00002"
        y="35.999992" />
     <rect
        style="fill:#dedede;fill-opacity:1;stroke-width:0.132291"
        id="rect835-5-3-6-56-2"
        width="12"
        height="12"
-       x="120.00001"
-       y="23.999998" />
+       x="132"
+       y="24" />
+    <rect
+       style="fill:#95ffcf;fill-opacity:1;stroke-width:0.132291"
+       id="rect835-5-3-7-3"
+       width="12"
+       height="12"
+       x="83.999992"
+       y="24.00001" />
+    <rect
+       style="fill:#61ffb0;fill-opacity:1;stroke-width:0.132291"
+       id="rect835-5-3-6-5-6"
+       width="12"
+       height="12"
+       x="84"
+       y="36" />
   </g>
 </svg>

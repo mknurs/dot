@@ -1,6 +1,6 @@
 adwaita-qt 1.2.0-2
 cups-xerox-b2xx 1.0-1
-factorio 1.1.19-1
+factorio 1.1.21-1
 nerd-fonts-dejavu-complete 2.1.0-3
 numix-icon-theme-pack-git r7444-1
 otf-alegreya 2.008-2
