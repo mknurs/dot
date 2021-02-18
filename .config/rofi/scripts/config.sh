@@ -5,5 +5,5 @@ chosen=$(/usr/bin/git --git-dir=/home/mkn/.cfg/ --work-tree=/home/mkn/ ls-tree -
 if [[ $chosen == "" ]]; then
 	exit
 else
-	xterm -e nvim $chosen
+	alacritty -e nvim $chosen
 fi

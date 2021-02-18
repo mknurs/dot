@@ -4,6 +4,6 @@
 [[ -f $HOME/.config/X11/Xresources ]] && xrdb -merge -I$HOME $HOME/.config/X11/Xresources
 
 # xsetroot
-xsetroot -solid "#333" & 
+# xsetroot -solid "#333333" & this is broken
 # Openbox
 exec openbox-session

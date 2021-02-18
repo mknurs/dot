@@ -28,7 +28,7 @@ XTerm.vt100.translations: #override \n\
 XTerm*BorderWidth: 15
 
 !Resizing
-XTerm*allowWindowOps: true
+!XTerm*allowWindowOps: true
 
 !Font
 *renderFont: true

@@ -1,0 +1,13 @@
+import:
+        - /home/mkn/.config/alacritty/alacritty.yml
+
+window:
+        dimensions:
+                columns: 64
+                lines: 9
+        position:
+                x: 840
+                y: 18
+        padding:
+                x: 6
+                y: 6
