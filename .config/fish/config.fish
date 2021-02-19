@@ -11,3 +11,4 @@ end
 
 # ALIAS
 alias config='/usr/bin/git --git-dir=/home/mkn/.cfg/ --work-tree=/home/mkn/'
+alias ls='ls -lah'
