@@ -8,6 +8,7 @@ autoconf
 automake
 base
 bison
+code
 connman
 dhcpcd
 dunst
@@ -21,10 +22,8 @@ foomatic-db-engine
 foomatic-db-gutenprint-ppds
 foomatic-db-nonfree
 gcc
-geany
 gimp
 gnome-themes-extra
-grub
 gtk-engine-murrine
 gtk-engines
 gutenprint
@@ -40,6 +39,7 @@ intel-ucode
 iwd
 kdenlive
 libreoffice-fresh-sl
+light
 linux-firmware
 linux-lts-headers
 lrzip
@@ -67,7 +67,6 @@ sshfs
 sudo
 tex-gyre-fonts
 texlive-bibtexextra
-texlive-fontsextra
 texlive-formatsextra
 texlive-games
 texlive-humanities
@@ -89,11 +88,10 @@ xarchiver
 xclip
 xdg-user-dirs
 xf86-video-intel
-xf86-video-vesa
 xorg-server
 xorg-xbacklight
 xorg-xinit
-xorg-xrandr
+xorg-xinput
 xsettingsd
 xterm
 zathura-djvu

@@ -1,10 +1,6 @@
 adwaita-qt
-cups-xerox-b2xx
 factorio
-nerd-fonts-dejavu-complete
-numix-icon-theme-pack-git
-otf-alegreya
+numix-icon-theme-git
 paru
 redshift-minimal
 thinkfan
-ttf-times-new-roman

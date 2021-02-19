@@ -3,7 +3,29 @@
 # load Xresources
 [[ -f $HOME/.config/X11/Xresources ]] && xrdb -merge -I$HOME $HOME/.config/X11/Xresources
 
-# xsetroot
-# xsetroot -solid "#333333" & this is broken
-# Openbox
+# start some nice programs
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+	for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+		[ -x "$f" ] && . "$f"
+	done
+	unset f
+fi
+
+# xorg conf
+
+# enable tapping on touchpad
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
+
+# set keymap
+setxkbmap si &
+
+# turn screensaver off
+xset -dpms &
+xset s off &
+
+# xsettingsd
+xsettingsd &
+
+# openbox
 exec openbox-session

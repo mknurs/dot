@@ -1,15 +1,5 @@
-# Set keymap
-setxkbmap si &
-
-# Screensaver [off]
-xset -dpms &
-xset s off &
-
 # Policy kit
 lxpolkit &
-
-# Xsettingsd
-xsettingsd &
 
 # Compositor
 picom -b &

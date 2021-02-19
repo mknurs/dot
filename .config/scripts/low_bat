@@ -1,0 +1,12 @@
+#!/bin/bash
+ 
+capacity=`cat /sys/class/power_supply/BAT0/capacity`
+status=`cat /sys/class/power_supply/BAT0/status`
+THRESHOLD=7
+ 
+if [[ "$status"=Discharging && $capacity -lt $THRESHOLD ]]
+then
+        notify-send -t 5000 -u critical -i battery-low "battery low" "hibernating" &
+        sleep 5 &
+        systemctl hibernate
+fi

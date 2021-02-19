@@ -2,7 +2,7 @@
 Description=check for low battery
 
 [Service]
-ExecStart=bash /usr/local/bin/low_bat
+ExecStart=bash /home/mkn/.config/scripts/bin/low_bat
 
 [Install]
 WantedBy=multi-user.target
