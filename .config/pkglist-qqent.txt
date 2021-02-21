@@ -1,5 +1,4 @@
 acpi
-alacritty
 alsa-firmware
 alsa-plugins
 alsa-utils
@@ -40,6 +39,7 @@ scribus
 scrot
 sshfs
 sudo
+termite
 tex-gyre-fonts
 texlive-bibtexextra
 texlive-formatsextra
@@ -56,9 +56,7 @@ transmission-gtk
 ttf-roboto
 viewnior
 xdg-user-dirs
-xf86-video-intel
 xorg-server
-xorg-xbacklight
 xorg-xinit
 xorg-xinput
 xsettingsd

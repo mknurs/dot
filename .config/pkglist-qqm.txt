@@ -1,5 +1,4 @@
 adwaita-qt
-factorio
 numix-icon-theme-git
 paru
 redshift-minimal
