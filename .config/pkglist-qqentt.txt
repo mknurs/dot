@@ -8,7 +8,6 @@ automake
 base
 bison
 code
-connman
 dhcpcd
 dunst
 efibootmgr
@@ -22,6 +21,7 @@ foomatic-db-gutenprint-ppds
 foomatic-db-nonfree
 gcc
 gimp
+git
 gnome-themes-extra
 gtk-engine-murrine
 gtk-engines
@@ -39,8 +39,12 @@ iwd
 kdenlive
 libreoffice-fresh-sl
 light
+linux
 linux-firmware
+linux-headers
 linux-lts-headers
+linux-zen
+linux-zen-headers
 lrzip
 lxsession-gtk3
 lzip

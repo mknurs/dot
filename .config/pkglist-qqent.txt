@@ -7,7 +7,6 @@ automake
 base
 bison
 code
-connman
 dhcpcd
 dunst
 efibootmgr
@@ -19,10 +18,14 @@ gtk-engine-murrine
 htop
 inkscape
 intel-ucode
+iwd
 kdenlive
 libreoffice-fresh-sl
 light
+linux-headers
 linux-lts-headers
+linux-zen
+linux-zen-headers
 lxsession-gtk3
 make
 man-db

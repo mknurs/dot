@@ -124,7 +124,7 @@
     <!-- send to desktops -->
     <keybind key="C-W-1">
       <action name="SendToDesktop">
-        <desktop>1</desktop>
+        <desktop>\f120</desktop>
       </action>
     </keybind>
     <keybind key="C-W-2">
@@ -370,6 +370,9 @@
     <keybind key="W-F10">
       <action name="Execute">
         <command>openbox --reconfigure</command>
+      </action>
+      <action name="Execute">
+        <command>openbox --restart</command>
       </action>
     </keybind>
     <keybind key="A-F4">
