@@ -11,5 +11,5 @@ end
 
 # ALIAS
 alias config='/usr/bin/git --git-dir=/home/mkn/.cfg/ --work-tree=/home/mkn/'
-alias ls='ls -lah'
+alias ls='ls -lah --color=auto'
 alias pkglists='pacman -Qqentt > $HOME/.config/pkglist-qqentt.txt & pacman -Qqent > $HOME/.config/pkglist-qqent.txt & pacman -Qqm > $HOME/.config/pkglist-qqm.txt'
