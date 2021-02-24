@@ -42,8 +42,8 @@ XTerm*BorderWidth: 15
 *.cursorColor:  #eeeeee
 
 ! black
-*.color0:       #171717
-*.color8:       #404040
+*.color0:       #404040
+*.color8:       #777777
 
 ! red
 *.color1:       #ff5533
@@ -74,5 +74,5 @@ XTerm*BorderWidth: 15
 *.color14:      #d1e8ff
 
 ! white
-*.color7:       #777777
-*.color15:      #dedede
+*.color7:       #a7a7a7
+*.color15:      #c9c9c9

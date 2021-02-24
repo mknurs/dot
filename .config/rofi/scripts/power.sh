@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 chosen=$(echo -e "Logout\nPoweroff\nReboot\nSuspend\nHibernate" | rofi -theme power -dmenu -i)
 

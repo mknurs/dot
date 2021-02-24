@@ -57,22 +57,37 @@ background = #333333
 #highlight = #2f2f2f
 
 # Colors from color0 to color254 can be set
-color0 = #171717
+# black
+color0 = #404040
+color8 = #777777
+
+# red
 color1 = #ff5533
-color2 = #61ffb0
-color3 = #fff2b1
-color4 = #335cff
-color5 = #d48cb7
-color6 = #b3d7ff
-color7 = #777777
-color8 = #404040
 color9 = #ff8b6a
+
+# green
+color2 = #61ffb0
 color10 = #95ffcf
+
+# yellow
+color3 = #fff2b1
 color11 = #fff8d0
+
+# blue
+color4 = #335cff
 color12 = #6a91ff
+
+# magenta
+color5 = #d48cb7
 color13 = #e6b7d4
+
+# cyan
+color6 = #b3d7ff
 color14 = #d1e8ff
-color15 = #dedede
+
+# white
+color7 = #a7a7a7
+color15 = #c9c9c9
 
 [hints]
 #font = Monospace 12
