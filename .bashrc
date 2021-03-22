@@ -23,7 +23,7 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # PROMPT
-PS1="\[\033[38;5;8m\][\u@\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;2m\]\W\[$(tput sgr0)\]\[\033[38;5;8m\]]\[$(tput sgr0)\]\[\033[38;5;1m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+PS1="\[\033[38;5;8m\][\u@\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;2m\]\W\[$(tput sgr0)\]\[\033[38;5;8m\]]\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\] "
 
 # COMPLETION
 complete -cf sudo
@@ -34,6 +34,7 @@ alias ls='ls -lah --color=auto'
 # pacman
 alias syy='sudo pacman -Syy'
 alias syu='sudo pacman -Syu'
+alias qqentt="pacman -Qqentt | grep -ve 'base' -ve '$(pacman -Qqg base-devel)'"
 
 # dotfiles
 alias config='/usr/bin/git --git-dir=/home/mkn/.cfg/ --work-tree=/home/mkn/'
