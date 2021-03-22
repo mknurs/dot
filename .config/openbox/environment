@@ -1,1 +1,8 @@
+# default apps
+export EDITOR=nano
+export VISUAL=nvim
+export BROWSER=firefox
+export TERM=xterm-termite
+
+# theeming
 export QT_STYLE_OVERRIDE=Adwaita
