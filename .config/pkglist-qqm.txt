@@ -1,6 +1,0 @@
-adwaita-qt
-cups-xerox-b2xx
-nerd-fonts-dejavu-complete
-numix-icon-theme-git
-redshift-minimal
-thinkfan

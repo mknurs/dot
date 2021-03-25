@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Echoes volume (percentage) and on/off.
 
 vol=$(amixer sget Master | awk -F"[][]" '/Mono:/{print $2}')

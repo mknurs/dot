@@ -640,6 +640,8 @@ foomatic-db-gutenprint-ppds
 sane
 sane-airscan
 scantailor
+calibre
+rsync
 
 # tessdata
 tesseract-data-eng

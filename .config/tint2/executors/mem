@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Echoes memory usage in human readable form.
 
 echo "$(free -h | awk '/Mem/ { print $3 }')"

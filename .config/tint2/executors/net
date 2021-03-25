@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Echoes the connected SSID.
 
 if [[ $(iw wlan0 link | awk '/SSID/{print $2}') == "" ]]; then
