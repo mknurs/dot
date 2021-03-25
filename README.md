@@ -701,4 +701,5 @@ numix-icon-theme-pack-git
 
 # laptop
 thinkfan
+bcm20702a1-firmware
 ```
