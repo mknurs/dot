@@ -64,7 +64,7 @@ An example (UEFI with GPT, separate `/home` partition):
 -------------|-------------|-------------------|-------------------
  `/mnt/efi`  | `/dev/sda1` | EFI `1`           | `+300M`
  [SWAP]      | `/dev/sda2` | Linux swap `19`   | `+16G`
- `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G` 
+ `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G`
  `/mnt/home` | `/dev/sda4` | Linux x86-64 `23` | remainder of disk
 
 To write the partition table.
@@ -246,7 +246,7 @@ initrd	/initramfs-linux-lts.img
 options	root=/dev/sda3 rw resume=/dev/sda2
 ```
 **Note:**  
-Disks should be referenced with their UUID. It is easier to amend that in a usable desktop environment. 
+Disks should be referenced with their UUID. It is easier to amend that in a usable desktop environment.
 
 Exit chroot, unmount and reboot.
 ```
@@ -441,11 +441,11 @@ $ sudo nvim .config/scripts/low_bat
 ```
 ```bash
 #!/bin/bash
- 
+
 capacity=`cat /sys/class/power_supply/BAT0/capacity`
 status=`cat /sys/class/power_supply/BAT0/status`
 THRESHOLD=7
- 
+
 if [[ "$status"=Discharging && $capacity -lt $THRESHOLD ]]
 then
         notify-send -t 5000 -u critical -i battery-low "battery low" "hibernating" &
@@ -554,14 +554,16 @@ neovim
 xterm
 termite
 
-# git
+# git and wget
 git
+wget
 
 # post chroot
 
 # X and video
 xorg-server
 xorg-xinit
+xorg-xinput
 vulkan-intel
 
 # audio
@@ -606,7 +608,6 @@ gvfs-nfs
 # xarchiver opdeps
 arj
 binutils
-bzip2
 cpio
 gzip
 lha
@@ -620,9 +621,7 @@ unarj
 unrar
 unzip
 xdg-utils
-xz
 zip
-zstd
 
 # additional FUSE
 sshfs
