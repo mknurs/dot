@@ -1,7 +1,6 @@
 #!/bin/sh
 # Echoes volume (percentage) and on/off.
 
-vol=$(amixer sget Master | awk -F"[][]" '/Mono:/{print $2}')
-master=$(amixer sget Master | awk '/Mono:/{print $6}')
+vol=$(pamixer --get-volume-human)
 
-echo "$vol $master"
+echo "$vol"

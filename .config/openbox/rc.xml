@@ -165,10 +165,10 @@
 		<keybind key="W-q">
 			<action name="Close"/>
 		</keybind>
-		<keybind key="A-Prior">
+		<keybind key="W-Prior">
 			<action name="ToggleMaximize"/>
 		</keybind>
-		<keybind key="A-Next">
+		<keybind key="W-Next">
 			<action name="Iconify"/>
 		</keybind>
 		<keybind key="A-r">
@@ -485,22 +485,22 @@
 		<!-- laptop buttons -->
 		<keybind key="XF86AudioRaiseVolume">
 			<action name="Execute">
-				<command>amixer set Master 2%+</command>
+				<command>pamixer -i 2</command>
 			</action>
 		</keybind>
 		<keybind key="XF86AudioLowerVolume">
 			<action name="Execute">
-				<command>amixer set Master 2%-</command>
+				<command>pamixer -d 2</command>
 			</action>
 		</keybind>
 		<keybind key="XF86AudioMute">
 			<action name="Execute">
-				<command>amixer set Master toggle</command>
+				<command>pamixer -t</command>
 			</action>
 		</keybind>
 		<keybind key="XF86AudioMicMute">
 			<action name="Execute">
-				<command>amixer set Capture toggle</command>
+				<command>pamixer --default-source -t</command>
 			</action>
 		</keybind>
 		<keybind key="XF86MonBrightnessUp">

@@ -545,20 +545,24 @@ which
 # networking
 iwd
 dhcpcd
+openssh
 
 # editor
 nano
 neovim
-
-# terminal
-xterm
-termite
 
 # git and wget
 git
 wget
 
 # post chroot
+
+# aur helper
+paru
+
+# terminal
+xterm
+termite
 
 # X and video
 xorg-server
@@ -567,9 +571,14 @@ xorg-xinput
 vulkan-intel
 
 # audio
-alsa-firmware
-alsa-plugins
-alsa-utils
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
+pamixer
+
+# bluetooth
+bluez
+bluez-utils
 
 # desktop
 picom
@@ -608,9 +617,10 @@ gvfs-nfs
 # xarchiver opdeps
 arj
 binutils
+bzip2
 cpio
 gzip
-lha
+lhasa
 lrzip
 lz4
 lzip
@@ -621,7 +631,9 @@ unarj
 unrar
 unzip
 xdg-utils
+xz
 zip
+zstd
 
 # additional FUSE
 sshfs
@@ -635,14 +647,21 @@ foomatic-db-nonfree
 gutenprint
 foomatic-db-gutenprint-ppds
 
+# printing (foreign)
+cups-xerox-b2xx
+
 # scanning
 sane
 sane-airscan
-scantailor
+scantailor-advanced
 calibre
 rsync
 
+# scanning (foreign)
+ocrmypdf
+
 # tessdata
+tesseract
 tesseract-data-eng
 tesseract-data-slv
 tesseract-data-ita
@@ -666,7 +685,6 @@ audacity
 
 # academia
 pandoc
-pandoc-crossref
 texlive-core
 
 # office
@@ -677,28 +695,35 @@ acpi
 acpi_call
 tlp
 
-# theeming
+# laptop (foreign)
+thinkfan
+bcm20702a1-firmware
+
+# theming
 gnome-themes-extra
 gtk-engines
 gtk-engine-murrine
+
+# theming (foreign)
+adwaita-qt
+numix-icon-theme-pack-git
+
+# fonts
+ttf-dejavu
+ttf-liberation
+
+# fonts (foreign)
+ttf-ms-fonts
 ```
 
 Foreign:
 ```
-# aur helper
-paru
 
 # printing
-cups-xerox-b2xx
 
 # scanning
-ocrmypdf
 
-# theeming
-adwaita-qt
-numix-icon-theme-pack-git
+# theming
 
 # laptop
-thinkfan
-bcm20702a1-firmware
 ```
