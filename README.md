@@ -288,8 +288,6 @@ $ iwctl
 [iwd]$ station <DEVICE> connect <SSID>
 ```
 
-
-
 ```
 $ sudo systemctl enable sshd.service
 ```
@@ -506,7 +504,6 @@ $ sudo systemctl start cups.service
 
 ## Package list:
 
-Native:
 ```
 # base
 base
@@ -714,16 +711,4 @@ ttf-liberation
 
 # fonts (foreign)
 ttf-ms-fonts
-```
-
-Foreign:
-```
-
-# printing
-
-# scanning
-
-# theming
-
-# laptop
 ```
