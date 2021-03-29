@@ -1,118 +1,137 @@
-# Arch installation and personal setup on a Thinkpad x230
+# Dotfiles, Arch installation and customization
 
-## 1. Usb image
+This repo contains the tracked dotfiles and keeps a list of packages and configuration steps for my personal Thinkpad x230 setup.
 
-Change keyboard to slovene.
+## Arch Installation
+
+**(1) Change keyboard to slovene.**
 ```
 # loadkeys slovene
 ```
 
-Connect to wifi using `iwctl`.
+**(2) Connect to wifi using `iwctl`.**
 ```
 # iwctl
 ```
-Get list of devices, find your <DEVICE>.
-```
-[iwd]# device list
-```
-Scan stations from the <DEVICE>.
-```
-[iwd]# station <DEVICE> scan
-```
-List networks from <DEVICE> to get <SSID>.
-```
-[iwd]# station <DEVICE> get-networks
-```
-Connect to <SSID> (and enter password).
-```
-[iwd]# station <DEVICE> connect <SSID>
-```
 
-Set timezone and synchronize clock.
+> **(2.1) Get list of \<DEVICES\>.**
+> ```
+> [iwd]# device list
+> ```
+> 
+> **(2.2) Scan stations from the \<DEVICE\>.**
+> ```
+> [iwd]# station \<DEVICE\> scan
+> ```
+> 
+> **(2.3) List networks from \<DEVICE\> to get \<SSID\>.**
+> ```
+> [iwd]# station \<DEVICE\> get-networks
+> ```
+> 
+> **(2.4) Connect to \<SSID\>.**
+> ```
+> [iwd]# station \<DEVICE\> connect \<SSID\>
+> ```
+
+**(3) Set timezone and synchronize clock.**
 ```
 # timedatectl set-timezone <REGION>/<CITY>
 ```
-Synchronize with Network Time Protocol.
+
+**(4) Synchronize with Network Time Protocol.**
 ```
 # timedatectl set-ntp true
 ```
 
-Partition and format disk.  
-**Note:**  
-These instructions are for UEFI systems.
+**(5) Partition disk.**
 
-Use `lsblk` to list all drives. Format the right one (usually `/dev/sda`) with `fdisk`.
-```
-# fdisk /dev/sda
-```
-To make a new partitioning table.
-```
-[fdisk]# g
-```
-To define a new partition.
-```
-[fdisk]# n
-```
-To set the type of partition.
-```
-[fdisk]# t
-```
+> **Note:**  
+> These instructions are for UEFI systems.
 
-An example (UEFI with GPT, separate `/home` partition):
+> Use `lsblk` to list all drives. Format the right one (usually `/dev/sda`) with `fdisk`.
+> ```
+> # fdisk /dev/sda
+> ```
+> 
+> To make a new partitioning table.
+> ```
+> [fdisk]# g
+> ```
+> 
+> To define a new partition.
+> ```
+> [fdisk]# n
+> ```
+> 
+> To set the type of partition.
+> ```
+> [fdisk]# t
+> ```
+> 
+> To write the partition table.
+> ```
+> [fdisk]# w
+> ```
 
- mount point | partition   | partition type    | size
--------------|-------------|-------------------|-------------------
- `/mnt/efi`  | `/dev/sda1` | EFI `1`           | `+300M`
- [SWAP]      | `/dev/sda2` | Linux swap `19`   | `+16G`
- `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G`
- `/mnt/home` | `/dev/sda4` | Linux x86-64 `23` | remainder of disk
+> An example (UEFI with GPT, separate `/home` partition):
+>
+> mount point | partition   | partition type    | size
+>-------------|-------------|-------------------|-------------------
+> `/mnt/efi`  | `/dev/sda1` | EFI `1`           | `+300M`
+> [SWAP]      | `/dev/sda2` | Linux swap `19`   | `+16G`
+> `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G`
+> `/mnt/home` | `/dev/sda4` | Linux x86-64 `23` | remainder of disk
 
-To write the partition table.
-```
-[fdisk]# w
-```
 
-Format the created partitions to correct filesystems.  
-UEFI needs fat32.
-```
-# mkfs.fat -F32 -n boot /dev/sda1
-```
-Swap.
-```
-# mkswap -L swap /dev/sda2
-```
-Home and root partitions use ext4.
-```
-# mkfs.ext4 -L arch /dev/sda3
-```
-```
-# mkfs.ext4 -L home /dev/sda4
-```
 
-Mount partitions.  
-**Note:**  
-We use `/disk/by-label` since we formatted the partitions with labels.
-```
-# mount /dev/disk/by-label/arch /mnt
-```
-Make necessary dirs to mount.
-```
-# mkdir /mnt/boot
-```
-```
-# mkdir /mnt/home
-```
-Mount the `boot` and `home` partitions.
-```
-# mount /dev/disk/by-label/boot /mnt/boot
-```
-```
-# mount /dev/disk/by-label/home /mnt/home
-```
-Turn on swap.
-```
-# swapon /dev/disk/by-label/swap
-```
+**(6) Format the created partitions to correct filesystems.**
+
+> UEFI uses fat32.
+> ```
+> # mkfs.fat -F32 -n boot /dev/sda1
+> ```
+> 
+> Swap.
+> ```
+> # mkswap -L swap /dev/sda2
+> ```
+> 
+> Home and root partitions use ext4.
+> ```
+> # mkfs.ext4 -L arch /dev/sda3
+> ```
+> ```
+> # mkfs.ext4 -L home /dev/sda4
+> ```
+
+**(7) Mount partitions.**
+
+> **Note:**  
+> We use `/disk/by-label` since we formatted the partitions *(6)* with labels.
+
+> **(7.1) Mount the root partition to `/mnt`.**
+> ```
+> # mount /dev/disk/by-label/arch /mnt
+> ```
+>
+> **(7.2) Make the necessary dirs to mount.**
+> ```
+> # mkdir /mnt/boot /mnt/home
+> ```
+>
+> **(7.3) Mount the `boot` and `home` partitions.**
+> ```
+> # mount /dev/disk/by-label/boot /mnt/boot
+> ```
+> ```
+> # mount /dev/disk/by-label/home /mnt/home
+> ```
+> 
+> **(7.4) Turn on swap.**
+> ```
+> # swapon /dev/disk/by-label/swap
+> ```
 
 Base installation and fstab.  
 ```
