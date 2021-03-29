@@ -36,7 +36,7 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 
 **(3) Set timezone and synchronize clock.**
 ```
-# timedatectl set-timezone <REGION>/<CITY>
+# timedatectl set-timezone \<REGION\>/\<CITY\>
 ```
 
 **(4) Synchronize with Network Time Protocol.**
@@ -46,8 +46,7 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 
 **(5) Partition disk.**
 
-> **Note:**  
-> These instructions are for UEFI systems.
+***Note:** These instructions are for UEFI systems.*
 
 > Use `lsblk` to list all drives. Format the right one (usually `/dev/sda`) with `fdisk`.
 > ```
@@ -74,11 +73,11 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 > [fdisk]# w
 > ```
 
-> An example (UEFI with GPT, separate `/home` partition):
+> An example (UEFI with GPT and a separate `/home` partition):
 >
 > mount point | partition   | partition type    | size
 >-------------|-------------|-------------------|-------------------
-> `/mnt/efi`  | `/dev/sda1` | EFI `1`           | `+300M`
+> `/mnt/boot` | `/dev/sda1` | EFI `1`           | `+300M`
 > [SWAP]      | `/dev/sda2` | Linux swap `19`   | `+16G`
 > `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G`
 > `/mnt/home` | `/dev/sda4` | Linux x86-64 `23` | remainder of disk
@@ -87,17 +86,17 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 
 **(6) Format the created partitions to correct filesystems.**
 
-> UEFI uses fat32.
+> **(6.1) Format the `boot` partition to fat32.**
 > ```
 > # mkfs.fat -F32 -n boot /dev/sda1
 > ```
 > 
-> Swap.
+> **(6.2) Make `swap`.**
 > ```
 > # mkswap -L swap /dev/sda2
 > ```
 > 
-> Home and root partitions use ext4.
+> **(6.3) Format the `home` and `root` partitions to ext4.**
 > ```
 > # mkfs.ext4 -L arch /dev/sda3
 > ```
@@ -107,10 +106,9 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 
 **(7) Mount partitions.**
 
-> **Note:**  
-> We use `/disk/by-label` since we formatted the partitions *(6)* with labels.
+***Note:** We use `/disk/by-label` since we formatted the partitions *(6)* with labels.*
 
-> **(7.1) Mount the root partition to `/mnt`.**
+> **(7.1) Mount the `root` partition to `/mnt`.**
 > ```
 > # mount /dev/disk/by-label/arch /mnt
 > ```
@@ -133,114 +131,125 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 > # swapon /dev/disk/by-label/swap
 > ```
 
-Base installation and fstab.  
+**(8) Install the base system.** 
 ```
 # pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode
 ```
 
-Generate fstab.
+**(9) Generate fstab.**
 ```
 # genfstab -U /mnt >> /mnt/etc/fstab
 ```
-Chroot into system.
+
+**(10) Chroot into system.**
 ```
 # arch-chroot /mnt
 ```
 
-## 2. Chroot
-
-Install an editor.
+**(11) Install a text editor.**
 ```
 # pacman -S nano neovim
 ```
 
-Set the timezone.
+**(12) Set the timezone.**
 ```
-# ln -sf /usr/share/zoneinfo/Europe/Ljubljana /etc/localtime
+# ln -sf /usr/share/zoneinfo/\<REGION\>/\<CITY\> /etc/localtime
 ```
-Update hardware clock.
+
+**(13) Update hardware clock.**
 ```
 # hwclock -w
 ```
 
-Select locales.
-```
-# nano /etc/locale.gen
-```
-Uncomment lines:
-```
-en_US.UTF-8
-sl_SI.UTF-8
-```
-Generate the uncommented locales.
-```
-# locale-gen
-```
-Set the locales.
+**(14) Generate locales.**
+
+> **(14.1) Open `locale.gen`.**
+> ```
+> # nano /etc/locale.gen
+> ```
+>
+> **(14.2) Uncomment the necessary lines.**
+> 
+> **(14.3) Generate the uncommented locales.**
+> ```
+> # locale-gen
+> ```
+
+**(15) Set the locales.
 ```
 # nano /etc/locale.conf
 ```
-```
-LANG=en_US.UTF-8
-LC_TIME=sl_SI.UTF-8
-LC_PAPER=sl_SI.UTF-8
-```
-Set the default keymap in tty.
+
+> An example of `locale.conf` contents:
+> 
+> ```
+> LANG=en_US.UTF-8
+> LC_TIME=sl_SI.UTF-8
+> LC_PAPER=sl_SI.UTF-8
+> ```
+
+**(16) Set the default keymap in tty.**
 ```
 # nano /etc/vconsole.conf
 ```
+
+> An example of `vconsole.conf` contents:
+> 
+> ```
+> KEYMAP=slovene
+> ```
+
+**(17) Set hostname.**
 ```
-KEYMAP=slovene
+# echo \<HOSTNAME\> \>\> /etc/hostname
 ```
 
-Set hostname.
-```
-# nano /etc/hostname
-```
-```
-HOSTNAME
-```
-Edit the hosts file.
+**(18) Edit the hosts file.
 ```
 # nano /etc/hosts
 ```
-```
-127.0.0.1   localhost
-::1         localhost
-127.0.1.1   HOSTNAME.localdomain    HOSTNAME
-```
-Set root password (follow prompt).
+
+> An example of `hosts` contents:
+> 
+> ```
+> 127.0.0.1   localhost
+> ::1         localhost
+> 127.0.1.1   \<HOSTNAME\>.localdomain    \<HOSTNAME\>
+> ```
+
+**(19) Set root password.
 ```
 # passwd
 ```
 
-Add a regular user (and add them to the wheel group).
+**(20) Add a regular user (and add them to the wheel group).**
 ```
-# useradd -mG wheel <USERNAME>
+# useradd -mG wheel \<USERNAME\>
 ```
-Set user password.
+
+**(21) Set user password.**
 ```
-# passwd <USERNAME>
+# passwd \<USERNAME\>
 ```
-Edit sudo privileges.
+
+**(22) Edit sudo privileges.**
 ```
 # EDITOR=nano visudo
 ```
-Uncomment line to allow members of wheel group to execute any command.
-```
-%wheel ALL=(ALL) ALL
-```
 
-Install the necessary networking packages (`iwd` and `dhcpcd`).
+> **(22.1) Uncomment line `%wheel ALL=(ALL) ALL` to allow members of wheel group to execute any command.**
+
+**(23) Install the necessary networking packages (`iwd` and `dhcpcd`).**
 ```
 # pacman -S iwd dhcpcd
 ```
 
-Install bootloader packages.
+**(24) Install bootloader packages.**
 ```
 # pacman -S efibootmgr
 ```
-Install systemd-boot.
+
+**(25) Install bootloader (`systemd-boot`).**
 ```
 # bootctl --path=/boot install
 ```
