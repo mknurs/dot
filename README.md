@@ -148,7 +148,7 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 
 **(11) Install a text editor.**
 ```
-# pacman -S nano neovim
+# pacman -S nano
 ```
 
 **(12) Set the timezone.**
@@ -253,48 +253,57 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 ```
 # bootctl --path=/boot install
 ```
-Make the necessary config files.  
-```
-# sudo nano /boot/loader/loader.conf
-```
-```
-timeout 3
-#console-mode keep
-default arch-*
-console-mode auto
-```
-```
-# sudo nano /boot/loader/entries/arch.conf
-```
-```
-title	Arch Linux
-linux	/vmlinuz-linux-lts
-initrd	/intel-ucode.img
-initrd	/initramfs-linux-lts.img
-options	root=/dev/sda3 rw resume=/dev/sda2
-```
-**Note:**  
-Disks should be referenced with their UUID. It is easier to amend that in a usable desktop environment.
 
-Exit chroot, unmount and reboot.
-```
-# exit
-```
-```
-# umount -R /mnt
-```
-```
-# reboot
-```
+> **(25.1) Edit `loader.conf`.**
+> ```
+> # sudo nano /boot/loader/loader.conf
+> ```
+>
+> Example of `loader.conf` contents:
+> 
+> ```
+> timeout 3
+> default \<ENTRY\>-*
+> console-mode auto
+> ```
+> 
+> **(25.2) Edit `\<ENTRY\>.conf`.**
+> ```
+> # sudo nano /boot/loader/entries/arch.conf
+> ```
+> 
+> Example of `\<ENTRY\>.conf` contents:
+> 
+> ```
+> title	Arch Linux
+> linux	/vmlinuz-linux-lts
+> initrd	/intel-ucode.img
+> initrd	/initramfs-linux-lts.img
+> options	root=/dev/sda3 rw resume=/dev/sda2
+> ```
+> 
+> ***Note:** Disks should be referenced with their UUID. It is easier to amend that in a usable desktop environment.*
 
-## 3. Post-installation (logged in as user)
+**(26) Exit chroot, unmount and reboot.**
+> ```
+> # exit
+> ```
+> 
+> ```
+> # umount -R /mnt
+> ```
+> 
+> ```
+> # reboot
+> ```
 
-At this point the base Arch install is done. The rest of this document is personalization. Additional package installation is done while logged in as user.
+## Post-installation configuration
 
-**Note:**  
-The `sudo` package should be installed (it is included in the `base-devel` package group).
+At this point the base Arch install is done. The rest of this document is personalization. Additional package installation and configuration is done while logged in as user.
 
-Enable networking services.
+### Networking
+
+**Enable and start networking services (`iwd.service` and `dhcpcd.service`).**
 ```
 $ sudo systemctl enable iwd.service
 ```
@@ -308,14 +317,12 @@ $ sudo systemctl enable dhcpcd.service
 $ sudo systemctl start dhcpcd.service
 ```
 
-Connect to wifi using `iwctl`.
+**Connect to wifi using `iwctl`.**
 ```
-$ iwctl
-```
-```
-[iwd]$ station <DEVICE> connect <SSID>
+$ iwctl station \<DEVICE\> connect \<SSID\>
 ```
 
+**Enable and start `sshd.service`.
 ```
 $ sudo systemctl enable sshd.service
 ```
@@ -323,148 +330,158 @@ $ sudo systemctl enable sshd.service
 $ sudo systemctl start sshd.service
 ```
 
-Install `git` for version control and installing the AUR helper. (isdep of paru)
+### Dotfiles version control
+
+**(1) Install `git`.**
 ```
 $ sudo pacman -S git
 ```
 
-Set-up configuration (dotfiles) tracking.  
-a) Initial set-up  
-Init a bare repository in the home folder.
-```
-$ git init --bare $HOME/.cfg
-```
-Define the alias in the current shell scope.
-```
-$ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-```
-Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.
-```
-$ config config --local status.showUntrackedFiles no
-```
-Save alias to `bash` config.
-```
-$ echo "alias config='/usr/bin/git --git-dir=$HOME/.config/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
-```
-Now you can use `config status`, `config add`, `config commit` etc.  
-b) Install existing dotfiles  
-Make sure your source repo ignores the folder where you'll clone it.
+**(2) Make sure your source repo ignores the folder where you'll clone it.**
 ```
 $ echo ".cfg" >> $HOME/.gitignore
 ```
-Clone your dotfiles into a bare repository.
+
+**(3) Clone your dotfiles into a bare repository.**
 ```
 git clone --bare <git-repo-url> $HOME/.cfg
 ```
-Define the alias in the current shell scope.
+
+**(4) Define the alias in the current shell scope.**
 ```
 $ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ```
-Checkout the actual content from the bare repository to your folder.  
+
+**(5) Checkout the actual content from the bare repository to your folder.** 
 ```
 $ config checkout
 ```
-**Note:**  
-This step might fail. If so, backup and remove the conflicting files. Then run the command again.  
-Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.
+
+***Note:** *(5)* might fail. If so, backup and remove the conflicting files. Then run *(5)* again.
+
+**(6) Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.**
 ```
 $ config config --local status.showUntrackedFiles no
 ```
 
-Enable AUR.  
-Clone the `paru` aur helper.
+> First time setup:
+> 
+> **(1) Install `git`.**
+> ```
+> $ sudo pacman -S git
+> ```
+>
+> **(2) Init a bare repository in the home folder.**
+> ```
+> $ git init --bare $HOME/.cfg
+> ```
+>
+> **(3) Define the alias in the current shell scope.**
+> ```
+> $ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+> ```
+>
+> **(4) Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.**
+> ```
+> $ config config --local status.showUntrackedFiles no
+> ```
+
+### AUR helper
+ 
+**(1) Clone the `paru` aur helper.**
 ```
 $ git clone https://aur.archlinux.org/paru.git
 ```
-Move to the cloned directory.
+
+**(2) Move to the cloned directory.**
 ```
 $ cd paru
 ```
-Make package.
+
+**(3) Make package.**
 ```
 $ makepkg -si
 ```
 
-**Todo:**  
-I cant automount (or mount) my phone yet.
+### Laptop configuration
 
-Utils
-Update user directories.
+**(1) Install `tlp`.
 ```
-$ xdg-user-dirs-update
+$ sudo pacman -S tlp
 ```
 
-Screen brightness and temperature
-The user has to be in the `video` group (for light, screen brightness ...):
-```
-$ sudo gpasswd -a <USER> <GROUP>
-```
-
+**(2) Enable and start `tlp.service`.
 ```
 $ sudo systemctl enable tlp.service
 ```
 ```
 $ sudo systemctl start tlp.service
 ```
+
+**(3) Edit `tlp.conf`.
 ```
 $ sudo nano /etc/tlp.conf
 ```
+
+> Recommended settings for charging thresholds:
+> 
+> ```
+> START_CHARGE_THRESH_BAT0=67
+> STOP_CHARGE_THRESH_BAT0=100
+> ```
+
+**(4) Install `thinkfan`.
 ```
-START_CHARGE_THRESH_BAT0=67
-STOP_CHARGE_THRESH_BAT0=100
+$ paru -S thinkfan
 ```
 
-Fan control.
+**(5) Edit `thinkfan.conf`.
 ```
 $ sudo nano /etc/thinkfan.conf
 ```
-```
-tp_fan /proc/acpi/ibm/fan
-hwmon /sys/class/thermal/thermal_zone0/temp
 
-(0, 0,  60)
-(1, 53, 65)
-(2, 55, 66)
-(3, 57, 68)
-(4, 61, 70)
-(5, 64, 71)
-(7, 68, 32767)
-("level full-speed",	63,	32767)
-```
+> Recommended settings (example of `thinkfan.conf` contents):
+> 
+> ```
+> tp_fan /proc/acpi/ibm/fan
+> hwmon /sys/class/thermal/thermal_zone0/temp
+> 
+> (0, 0,  60)
+> (1, 53, 65)
+> (2, 55, 66)
+> (3, 57, 68)
+> (4, 61, 70)
+> (5, 64, 71)
+> (7, 68, 32767)
+> ("level full-speed",	63,	32767)
+> ```
 
-Hibernation.
-```
-$ sudo nano /boot/loader/entries/arch.conf
-```
-Add `resume=UUID=<UUID>` to options (already documented during bootloader installation).
+### Hibernation
 
-Add `resume` to `HOOKS` (after `udev`)
+**(1) Add `resume=UUID=<UUID>` to boot entry options (Documented in *25.2*).
+
+**(2) Add `resume` to `HOOKS` (after `udev`) in `mkinitcpio.conf`.
 ```
 $ sudo nano /etc/mkinitcpio.conf
 ```
-```
-HOOKS=(base udev resume autodetect modconf block filesystems keyboard fsck)
-```
+
+> `HOOKS` line should look something like this:
+> 
+> ```
+> HOOKS=(base udev resume autodetect modconf block filesystems keyboard fsck)
+> ```
+
+**(3) Remake the initial ramdisk environment.**
 ```
 $ sudo mkinitcpio -p linux
 ```
 
-Kernel modules.  
-Add the `i915` module to kernel.
-```
-$ sudo nano /etc/mkinitcpio.conf
-```
-```
-MODULES=(i915)
-```
+#### Auto-hibernate on low battery
 
-Set-up enter hibernation on low battery.  
-We are going to create a user systemd service for checking battery level and sending the hibernate command.
+**(1) Create a script for checking battery level.**
 
-Create a script for checking battery level.
-```
-$ sudo nvim .config/scripts/low_bat
-```
+***Note:** the script is already in the repo.*
+
 ```bash
 #!/bin/bash
 
@@ -479,41 +496,51 @@ then
         systemctl hibernate
 fi
 ```
-Make the file executable.
+
+**(2) Make the file executable.**
 ```
-$ sudo chmod u+x /usr/local/bin/low_bat
+$ sudo chmod u+x \<SCRIPT\>
 ```
-To automate the check make a service file. (We make it in the local config path so not to mess with system-wide systemd and so that the user environment variables are inherited.)
+
+**(3) Make a service file to automate the check.
 ```
 $ nvim .config/systemd/user/low_bat.service
 ```
-```
-[Unit]
-Description=check for low battery
 
-[Service]
-ExecStart=bash /usr/local/bin/low_bat
+> `low_bat.service` contents:
+>
+> ```
+> [Unit]
+> Description=check for low battery
+>
+> [Service]
+> ExecStart=bash /usr/local/bin/low_bat
+>
+> [Install]
+> WantedBy=multi-user.target
+> ```
 
-[Install]
-WantedBy=multi-user.target
-```
-Also make a timer to define the checking intervals.
+**(4) Make a timer to define the checking intervals.**
 ```
 $ nvim .config/systemd/user/low_bat.timer
 ```
-```
-[Unit]
-Description=timer to run check for low battery
 
-[Timer]
-OnUnitActiveSec=300
-OnBootSec=300
-AccuracySec=1min
+> `low_bat.timer` contents:
+> 
+> ```
+> [Unit]
+> Description=timer to run check for low battery
+>
+> [Timer]
+> OnUnitActiveSec=300
+> OnBootSec=300
+> AccuracySec=1min
+> 
+> [Install]
+> WantedBy=timers.target
+> ```
 
-[Install]
-WantedBy=timers.target
-```
-Enable and start the timer.
+**(5) Enable and start the timer.**
 ```
 $ systemctl --user enable low_bat.timer
 ```
@@ -521,8 +548,40 @@ $ systemctl --user enable low_bat.timer
 $ systemctl --user start low_bat.timer
 ```
 
+### Kernel
+  
+**(1) Add the `i915` module to kernel.**
+```
+$ sudo nano /etc/mkinitcpio.conf
+```
 
-Enable and start `cups.service`.
+> `MODULES` line should look something like this:
+> 
+> ```
+> MODULES=(i915)
+> ```
+
+**(2) Install `lz4`.
+```
+$ sudo pacman -S lz4
+```
+
+**(3) Enable `lz4` compression.**
+
+> `COMPRESSION` line in `mkinitcpio.conf` should look something like this:
+> 
+> ```
+> COMPRESSION=lz4
+> ```
+
+**(4) Remake the initial ramdisk environment.**
+```
+$ sudo mkinitcpio -p linux
+```
+
+### Printing
+
+**(1) Enable and start `cups.service`.**
 ```
 $ sudo systemctl enable cups.service
 ```
