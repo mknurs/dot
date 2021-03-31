@@ -679,6 +679,7 @@ inkscape
 scribus
 kdenlive
 audacity
+blender
 
 # academia
 pandoc
