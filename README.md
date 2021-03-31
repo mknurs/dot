@@ -1,272 +1,309 @@
-# Arch installation and personal setup on a Thinkpad x230
+# Dotfiles, Arch installation and customization
 
-## 1. Usb image
+This repo contains the tracked dotfiles and keeps a list of packages and configuration steps for my personal Thinkpad x230 setup.
 
-Change keyboard to slovene.
+## Arch Installation
+
+**(1) Change keyboard to slovene.**
 ```
 # loadkeys slovene
 ```
 
-Connect to wifi using `iwctl`.
+**(2) Connect to wifi using `iwctl`.**
 ```
 # iwctl
 ```
-Get list of devices, find your <DEVICE>.
+
+> **(2.1) Get list of \<DEVICES\>.**
+> ```
+> [iwd]# device list
+> ```
+> 
+> **(2.2) Scan stations from the \<DEVICE\>.**
+> ```
+> [iwd]# station \<DEVICE\> scan
+> ```
+> 
+> **(2.3) List networks from \<DEVICE\> to get \<SSID\>.**
+> ```
+> [iwd]# station \<DEVICE\> get-networks
+> ```
+> 
+> **(2.4) Connect to \<SSID\>.**
+> ```
+> [iwd]# station \<DEVICE\> connect \<SSID\>
+> ```
+
+**(3) Set timezone and synchronize clock.**
 ```
-[iwd]# device list
-```
-Scan stations from the <DEVICE>.
-```
-[iwd]# station <DEVICE> scan
-```
-List networks from <DEVICE> to get <SSID>.
-```
-[iwd]# station <DEVICE> get-networks
-```
-Connect to <SSID> (and enter password).
-```
-[iwd]# station <DEVICE> connect <SSID>
+# timedatectl set-timezone \<REGION\>/\<CITY\>
 ```
 
-Set timezone and synchronize clock.
-```
-# timedatectl set-timezone <REGION>/<CITY>
-```
-Synchronize with Network Time Protocol.
+**(4) Synchronize with Network Time Protocol.**
 ```
 # timedatectl set-ntp true
 ```
 
-Partition and format disk.  
-**Note:**  
-These instructions are for UEFI systems.
+**(5) Partition disk.**
 
-Use `lsblk` to list all drives. Format the right one (usually `/dev/sda`) with `fdisk`.
-```
-# fdisk /dev/sda
-```
-To make a new partitioning table.
-```
-[fdisk]# g
-```
-To define a new partition.
-```
-[fdisk]# n
-```
-To set the type of partition.
-```
-[fdisk]# t
-```
+***Note:** These instructions are for UEFI systems.*
 
-An example (UEFI with GPT, separate `/home` partition):
+> Use `lsblk` to list all drives. Format the right one (usually `/dev/sda`) with `fdisk`.
+> ```
+> # fdisk /dev/sda
+> ```
+> 
+> To make a new partitioning table.
+> ```
+> [fdisk]# g
+> ```
+> 
+> To define a new partition.
+> ```
+> [fdisk]# n
+> ```
+> 
+> To set the type of partition.
+> ```
+> [fdisk]# t
+> ```
+> 
+> To write the partition table.
+> ```
+> [fdisk]# w
+> ```
 
- mount point | partition   | partition type    | size
--------------|-------------|-------------------|-------------------
- `/mnt/efi`  | `/dev/sda1` | EFI `1`           | `+300M`
- [SWAP]      | `/dev/sda2` | Linux swap `19`   | `+16G`
- `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G`
- `/mnt/home` | `/dev/sda4` | Linux x86-64 `23` | remainder of disk
+> An example (UEFI with GPT and a separate `/home` partition):
+>
+> mount point | partition   | partition type    | size
+>-------------|-------------|-------------------|-------------------
+> `/mnt/boot` | `/dev/sda1` | EFI `1`           | `+300M`
+> [SWAP]      | `/dev/sda2` | Linux swap `19`   | `+16G`
+> `/mnt`      | `/dev/sda3` | Linux x86-64 `23` | `+30G`
+> `/mnt/home` | `/dev/sda4` | Linux x86-64 `23` | remainder of disk
 
-To write the partition table.
-```
-[fdisk]# w
-```
 
-Format the created partitions to correct filesystems.  
-UEFI needs fat32.
-```
-# mkfs.fat -F32 -n boot /dev/sda1
-```
-Swap.
-```
-# mkswap -L swap /dev/sda2
-```
-Home and root partitions use ext4.
-```
-# mkfs.ext4 -L arch /dev/sda3
-```
-```
-# mkfs.ext4 -L home /dev/sda4
-```
 
-Mount partitions.  
-**Note:**  
-We use `/disk/by-label` since we formatted the partitions with labels.
-```
-# mount /dev/disk/by-label/arch /mnt
-```
-Make necessary dirs to mount.
-```
-# mkdir /mnt/boot
-```
-```
-# mkdir /mnt/home
-```
-Mount the `boot` and `home` partitions.
-```
-# mount /dev/disk/by-label/boot /mnt/boot
-```
-```
-# mount /dev/disk/by-label/home /mnt/home
-```
-Turn on swap.
-```
-# swapon /dev/disk/by-label/swap
-```
+**(6) Format the created partitions to correct filesystems.**
 
-Base installation and fstab.  
+> **(6.1) Format the `boot` partition to fat32.**
+> ```
+> # mkfs.fat -F32 -n boot /dev/sda1
+> ```
+> 
+> **(6.2) Make `swap`.**
+> ```
+> # mkswap -L swap /dev/sda2
+> ```
+> 
+> **(6.3) Format the `home` and `root` partitions to ext4.**
+> ```
+> # mkfs.ext4 -L arch /dev/sda3
+> ```
+> ```
+> # mkfs.ext4 -L home /dev/sda4
+> ```
+
+**(7) Mount partitions.**
+
+***Note:** We use `/disk/by-label` since we formatted the partitions *(6)* with labels.*
+
+> **(7.1) Mount the `root` partition to `/mnt`.**
+> ```
+> # mount /dev/disk/by-label/arch /mnt
+> ```
+>
+> **(7.2) Make the necessary dirs to mount.**
+> ```
+> # mkdir /mnt/boot /mnt/home
+> ```
+>
+> **(7.3) Mount the `boot` and `home` partitions.**
+> ```
+> # mount /dev/disk/by-label/boot /mnt/boot
+> ```
+> ```
+> # mount /dev/disk/by-label/home /mnt/home
+> ```
+> 
+> **(7.4) Turn on swap.**
+> ```
+> # swapon /dev/disk/by-label/swap
+> ```
+
+**(8) Install the base system.** 
 ```
 # pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode
 ```
 
-Generate fstab.
+**(9) Generate fstab.**
 ```
 # genfstab -U /mnt >> /mnt/etc/fstab
 ```
-Chroot into system.
+
+**(10) Chroot into system.**
 ```
 # arch-chroot /mnt
 ```
 
-## 2. Chroot
-
-Install an editor.
+**(11) Install a text editor.**
 ```
-# pacman -S nano neovim
+# pacman -S nano
 ```
 
-Set the timezone.
+**(12) Set the timezone.**
 ```
-# ln -sf /usr/share/zoneinfo/Europe/Ljubljana /etc/localtime
+# ln -sf /usr/share/zoneinfo/\<REGION\>/\<CITY\> /etc/localtime
 ```
-Update hardware clock.
+
+**(13) Update hardware clock.**
 ```
 # hwclock -w
 ```
 
-Select locales.
-```
-# nano /etc/locale.gen
-```
-Uncomment lines:
-```
-en_US.UTF-8
-sl_SI.UTF-8
-```
-Generate the uncommented locales.
-```
-# locale-gen
-```
-Set the locales.
+**(14) Generate locales.**
+
+> **(14.1) Open `locale.gen`.**
+> ```
+> # nano /etc/locale.gen
+> ```
+>
+> **(14.2) Uncomment the necessary lines.**
+> 
+> **(14.3) Generate the uncommented locales.**
+> ```
+> # locale-gen
+> ```
+
+**(15) Set the locales.
 ```
 # nano /etc/locale.conf
 ```
-```
-LANG=en_US.UTF-8
-LC_TIME=sl_SI.UTF-8
-LC_PAPER=sl_SI.UTF-8
-```
-Set the default keymap in tty.
+
+> An example of `locale.conf` contents:
+> 
+> ```
+> LANG=en_US.UTF-8
+> LC_TIME=sl_SI.UTF-8
+> LC_PAPER=sl_SI.UTF-8
+> ```
+
+**(16) Set the default keymap in tty.**
 ```
 # nano /etc/vconsole.conf
 ```
+
+> An example of `vconsole.conf` contents:
+> 
+> ```
+> KEYMAP=slovene
+> ```
+
+**(17) Set hostname.**
 ```
-KEYMAP=slovene
+# echo \<HOSTNAME\> \>\> /etc/hostname
 ```
 
-Set hostname.
-```
-# nano /etc/hostname
-```
-```
-HOSTNAME
-```
-Edit the hosts file.
+**(18) Edit the hosts file.
 ```
 # nano /etc/hosts
 ```
-```
-127.0.0.1   localhost
-::1         localhost
-127.0.1.1   HOSTNAME.localdomain    HOSTNAME
-```
-Set root password (follow prompt).
+
+> An example of `hosts` contents:
+> 
+> ```
+> 127.0.0.1   localhost
+> ::1         localhost
+> 127.0.1.1   \<HOSTNAME\>.localdomain    \<HOSTNAME\>
+> ```
+
+**(19) Set root password.
 ```
 # passwd
 ```
 
-Add a regular user (and add them to the wheel group).
+**(20) Add a regular user (and add them to the wheel group).**
 ```
-# useradd -mG wheel <USERNAME>
+# useradd -mG wheel \<USERNAME\>
 ```
-Set user password.
+
+**(21) Set user password.**
 ```
-# passwd <USERNAME>
+# passwd \<USERNAME\>
 ```
-Edit sudo privileges.
+
+**(22) Edit sudo privileges.**
 ```
 # EDITOR=nano visudo
 ```
-Uncomment line to allow members of wheel group to execute any command.
-```
-%wheel ALL=(ALL) ALL
-```
 
-Install the necessary networking packages (`iwd` and `dhcpcd`).
+> **(22.1) Uncomment line `%wheel ALL=(ALL) ALL` to allow members of wheel group to execute any command.**
+
+**(23) Install the necessary networking packages (`iwd` and `dhcpcd`).**
 ```
 # pacman -S iwd dhcpcd
 ```
 
-Install bootloader packages.
+**(24) Install bootloader packages.**
 ```
 # pacman -S efibootmgr
 ```
-Install systemd-boot.
+
+**(25) Install bootloader (`systemd-boot`).**
 ```
 # bootctl --path=/boot install
 ```
-Make the necessary config files.  
-```
-# sudo nano /boot/loader/loader.conf
-```
-```
-timeout 3
-#console-mode keep
-default arch-*
-console-mode auto
-```
-```
-# sudo nano /boot/loader/entries/arch.conf
-```
-```
-title	Arch Linux
-linux	/vmlinuz-linux-lts
-initrd	/intel-ucode.img
-initrd	/initramfs-linux-lts.img
-options	root=/dev/sda3 rw resume=/dev/sda2
-```
-**Note:**  
-Disks should be referenced with their UUID. It is easier to amend that in a usable desktop environment.
 
-Exit chroot, unmount and reboot.
-```
-# exit
-```
-```
-# umount -R /mnt
-```
-```
-# reboot
-```
+> **(25.1) Edit `loader.conf`.**
+> ```
+> # sudo nano /boot/loader/loader.conf
+> ```
+>
+> Example of `loader.conf` contents:
+> 
+> ```
+> timeout 3
+> default \<ENTRY\>-*
+> console-mode auto
+> ```
+> 
+> **(25.2) Edit `\<ENTRY\>.conf`.**
+> ```
+> # sudo nano /boot/loader/entries/arch.conf
+> ```
+> 
+> Example of `\<ENTRY\>.conf` contents:
+> 
+> ```
+> title	Arch Linux
+> linux	/vmlinuz-linux-lts
+> initrd	/intel-ucode.img
+> initrd	/initramfs-linux-lts.img
+> options	root=/dev/sda3 rw resume=/dev/sda2
+> ```
+> 
+> ***Note:** Disks should be referenced with their UUID. It is easier to amend that in a usable desktop environment.*
 
-## 3. Post-installation (logged in as user)
+**(26) Exit chroot, unmount and reboot.**
+> ```
+> # exit
+> ```
+> 
+> ```
+> # umount -R /mnt
+> ```
+> 
+> ```
+> # reboot
+> ```
 
-At this point the base Arch install is done. The rest of this document is personalization. Additional package installation is done while logged in as user.
+## Post-installation configuration
 
-**Note:**  
-The `sudo` package should be installed (it is included in the `base-devel` package group).
+At this point the base Arch install is done. The rest of this document is personalization. Additional package installation and configuration is done while logged in as user.
 
-Enable networking services.
+### Networking
+
+**Enable and start networking services (`iwd.service` and `dhcpcd.service`).**
 ```
 $ sudo systemctl enable iwd.service
 ```
@@ -280,14 +317,12 @@ $ sudo systemctl enable dhcpcd.service
 $ sudo systemctl start dhcpcd.service
 ```
 
-Connect to wifi using `iwctl`.
+**Connect to wifi using `iwctl`.**
 ```
-$ iwctl
-```
-```
-[iwd]$ station <DEVICE> connect <SSID>
+$ iwctl station \<DEVICE\> connect \<SSID\>
 ```
 
+**Enable and start `sshd.service`.
 ```
 $ sudo systemctl enable sshd.service
 ```
@@ -295,148 +330,158 @@ $ sudo systemctl enable sshd.service
 $ sudo systemctl start sshd.service
 ```
 
-Install `git` for version control and installing the AUR helper. (isdep of paru)
+### Dotfiles version control
+
+**(1) Install `git`.**
 ```
 $ sudo pacman -S git
 ```
 
-Set-up configuration (dotfiles) tracking.  
-a) Initial set-up  
-Init a bare repository in the home folder.
-```
-$ git init --bare $HOME/.cfg
-```
-Define the alias in the current shell scope.
-```
-$ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-```
-Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.
-```
-$ config config --local status.showUntrackedFiles no
-```
-Save alias to `bash` config.
-```
-$ echo "alias config='/usr/bin/git --git-dir=$HOME/.config/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
-```
-Now you can use `config status`, `config add`, `config commit` etc.  
-b) Install existing dotfiles  
-Make sure your source repo ignores the folder where you'll clone it.
+**(2) Make sure your source repo ignores the folder where you'll clone it.**
 ```
 $ echo ".cfg" >> $HOME/.gitignore
 ```
-Clone your dotfiles into a bare repository.
+
+**(3) Clone your dotfiles into a bare repository.**
 ```
 git clone --bare <git-repo-url> $HOME/.cfg
 ```
-Define the alias in the current shell scope.
+
+**(4) Define the alias in the current shell scope.**
 ```
 $ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ```
-Checkout the actual content from the bare repository to your folder.  
+
+**(5) Checkout the actual content from the bare repository to your folder.** 
 ```
 $ config checkout
 ```
-**Note:**  
-This step might fail. If so, backup and remove the conflicting files. Then run the command again.  
-Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.
+
+***Note:** *(5)* might fail. If so, backup and remove the conflicting files. Then run *(5)* again.
+
+**(6) Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.**
 ```
 $ config config --local status.showUntrackedFiles no
 ```
 
-Enable AUR.  
-Clone the `paru` aur helper.
+> First time setup:
+> 
+> **(1) Install `git`.**
+> ```
+> $ sudo pacman -S git
+> ```
+>
+> **(2) Init a bare repository in the home folder.**
+> ```
+> $ git init --bare $HOME/.cfg
+> ```
+>
+> **(3) Define the alias in the current shell scope.**
+> ```
+> $ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+> ```
+>
+> **(4) Set the flag `showUntrackedFiles` to `no` on this specific (local) repository.**
+> ```
+> $ config config --local status.showUntrackedFiles no
+> ```
+
+### AUR helper
+ 
+**(1) Clone the `paru` aur helper.**
 ```
 $ git clone https://aur.archlinux.org/paru.git
 ```
-Move to the cloned directory.
+
+**(2) Move to the cloned directory.**
 ```
 $ cd paru
 ```
-Make package.
+
+**(3) Make package.**
 ```
 $ makepkg -si
 ```
 
-**Todo:**  
-I cant automount (or mount) my phone yet.
+### Laptop configuration
 
-Utils
-Update user directories.
+**(1) Install `tlp`.
 ```
-$ xdg-user-dirs-update
+$ sudo pacman -S tlp
 ```
 
-Screen brightness and temperature
-The user has to be in the `video` group (for light, screen brightness ...):
-```
-$ sudo gpasswd -a <USER> <GROUP>
-```
-
+**(2) Enable and start `tlp.service`.
 ```
 $ sudo systemctl enable tlp.service
 ```
 ```
 $ sudo systemctl start tlp.service
 ```
+
+**(3) Edit `tlp.conf`.
 ```
 $ sudo nano /etc/tlp.conf
 ```
+
+> Recommended settings for charging thresholds:
+> 
+> ```
+> START_CHARGE_THRESH_BAT0=67
+> STOP_CHARGE_THRESH_BAT0=100
+> ```
+
+**(4) Install `thinkfan`.
 ```
-START_CHARGE_THRESH_BAT0=67
-STOP_CHARGE_THRESH_BAT0=100
+$ paru -S thinkfan
 ```
 
-Fan control.
+**(5) Edit `thinkfan.conf`.
 ```
 $ sudo nano /etc/thinkfan.conf
 ```
-```
-tp_fan /proc/acpi/ibm/fan
-hwmon /sys/class/thermal/thermal_zone0/temp
 
-(0, 0,  60)
-(1, 53, 65)
-(2, 55, 66)
-(3, 57, 68)
-(4, 61, 70)
-(5, 64, 71)
-(7, 68, 32767)
-("level full-speed",	63,	32767)
-```
+> Recommended settings (example of `thinkfan.conf` contents):
+> 
+> ```
+> tp_fan /proc/acpi/ibm/fan
+> hwmon /sys/class/thermal/thermal_zone0/temp
+> 
+> (0, 0,  60)
+> (1, 53, 65)
+> (2, 55, 66)
+> (3, 57, 68)
+> (4, 61, 70)
+> (5, 64, 71)
+> (7, 68, 32767)
+> ("level full-speed",	63,	32767)
+> ```
 
-Hibernation.
-```
-$ sudo nano /boot/loader/entries/arch.conf
-```
-Add `resume=UUID=<UUID>` to options (already documented during bootloader installation).
+### Hibernation
 
-Add `resume` to `HOOKS` (after `udev`)
+**(1) Add `resume=UUID=<UUID>` to boot entry options (Documented in *25.2*).
+
+**(2) Add `resume` to `HOOKS` (after `udev`) in `mkinitcpio.conf`.
 ```
 $ sudo nano /etc/mkinitcpio.conf
 ```
-```
-HOOKS=(base udev resume autodetect modconf block filesystems keyboard fsck)
-```
+
+> `HOOKS` line should look something like this:
+> 
+> ```
+> HOOKS=(base udev resume autodetect modconf block filesystems keyboard fsck)
+> ```
+
+**(3) Remake the initial ramdisk environment.**
 ```
 $ sudo mkinitcpio -p linux
 ```
 
-Kernel modules.  
-Add the `i915` module to kernel.
-```
-$ sudo nano /etc/mkinitcpio.conf
-```
-```
-MODULES=(i915)
-```
+#### Auto-hibernate on low battery
 
-Set-up enter hibernation on low battery.  
-We are going to create a user systemd service for checking battery level and sending the hibernate command.
+**(1) Create a script for checking battery level.**
 
-Create a script for checking battery level.
-```
-$ sudo nvim .config/scripts/low_bat
-```
+***Note:** the script is already in the repo.*
+
 ```bash
 #!/bin/bash
 
@@ -451,41 +496,51 @@ then
         systemctl hibernate
 fi
 ```
-Make the file executable.
+
+**(2) Make the file executable.**
 ```
-$ sudo chmod u+x /usr/local/bin/low_bat
+$ sudo chmod u+x \<SCRIPT\>
 ```
-To automate the check make a service file. (We make it in the local config path so not to mess with system-wide systemd and so that the user environment variables are inherited.)
+
+**(3) Make a service file to automate the check.
 ```
 $ nvim .config/systemd/user/low_bat.service
 ```
-```
-[Unit]
-Description=check for low battery
 
-[Service]
-ExecStart=bash /usr/local/bin/low_bat
+> `low_bat.service` contents:
+>
+> ```
+> [Unit]
+> Description=check for low battery
+>
+> [Service]
+> ExecStart=bash /usr/local/bin/low_bat
+>
+> [Install]
+> WantedBy=multi-user.target
+> ```
 
-[Install]
-WantedBy=multi-user.target
-```
-Also make a timer to define the checking intervals.
+**(4) Make a timer to define the checking intervals.**
 ```
 $ nvim .config/systemd/user/low_bat.timer
 ```
-```
-[Unit]
-Description=timer to run check for low battery
 
-[Timer]
-OnUnitActiveSec=300
-OnBootSec=300
-AccuracySec=1min
+> `low_bat.timer` contents:
+> 
+> ```
+> [Unit]
+> Description=timer to run check for low battery
+>
+> [Timer]
+> OnUnitActiveSec=300
+> OnBootSec=300
+> AccuracySec=1min
+> 
+> [Install]
+> WantedBy=timers.target
+> ```
 
-[Install]
-WantedBy=timers.target
-```
-Enable and start the timer.
+**(5) Enable and start the timer.**
 ```
 $ systemctl --user enable low_bat.timer
 ```
@@ -493,8 +548,40 @@ $ systemctl --user enable low_bat.timer
 $ systemctl --user start low_bat.timer
 ```
 
+### Kernel
+  
+**(1) Add the `i915` module to kernel.**
+```
+$ sudo nano /etc/mkinitcpio.conf
+```
 
-Enable and start `cups.service`.
+> `MODULES` line should look something like this:
+> 
+> ```
+> MODULES=(i915)
+> ```
+
+**(2) Install `lz4`.
+```
+$ sudo pacman -S lz4
+```
+
+**(3) Enable `lz4` compression.**
+
+> `COMPRESSION` line in `mkinitcpio.conf` should look something like this:
+> 
+> ```
+> COMPRESSION=lz4
+> ```
+
+**(4) Remake the initial ramdisk environment.**
+```
+$ sudo mkinitcpio -p linux
+```
+
+### Printing
+
+**(1) Enable and start `cups.service`.**
 ```
 $ sudo systemctl enable cups.service
 ```
