@@ -655,9 +655,9 @@ xorg-xinput
 vulkan-intel
 
 # audio
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
+pipewire
+pipewire-alsa
+pipewire-pulse
 pamixer
 
 # bluetooth

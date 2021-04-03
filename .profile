@@ -18,4 +18,6 @@ export EDITOR=nvim
 # autostart startx
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] ; then
 	exec startx "$HOME/.config/X11/ob-xinitrc"
+#elif [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 2 ] ; then
+#	exec startx "$HOME/.config/X11/i3-xinitrc"
 fi

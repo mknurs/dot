@@ -1,5 +1,5 @@
 # Window geometry
-border.width: 0
+border.width: 1
 padding.width: 0
 
 window.client.padding.width: 0
@@ -17,7 +17,7 @@ window.active.title.bg.color: #333333
 window.active.label.bg: Parentrelative
 window.active.label.text.color: #eee
 
-window.active.border.color: #333333
+window.active.border.color: #eee
 
 
 # close

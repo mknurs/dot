@@ -780,4 +780,13 @@
 		<applicationIcons>no</applicationIcons>
 		<manageDesktops>yes</manageDesktops>
 	</menu>
+	<applications>
+		<application type="normal" class="*">
+			<decor>no</decor>
+			<size>
+				<height>100%</height>
+				<width>50%</width>
+			</size>
+		</application>
+	</applications>
 </openbox_config>
