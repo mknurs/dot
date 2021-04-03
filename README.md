@@ -21,17 +21,17 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 > 
 > **(2.2) Scan stations from the \<DEVICE\>.**
 > ```
-> [iwd]# station \<DEVICE\> scan
+> [iwd]# station <DEVICE> scan
 > ```
 > 
 > **(2.3) List networks from \<DEVICE\> to get \<SSID\>.**
 > ```
-> [iwd]# station \<DEVICE\> get-networks
+> [iwd]# station <DEVICE> get-networks
 > ```
 > 
 > **(2.4) Connect to \<SSID\>.**
 > ```
-> [iwd]# station \<DEVICE\> connect \<SSID\>
+> [iwd]# station <DEVICE> connect <SSID>
 > ```
 
 **(3) Set timezone and synchronize clock.**
@@ -175,7 +175,7 @@ This repo contains the tracked dotfiles and keeps a list of packages and configu
 > # locale-gen
 > ```
 
-**(15) Set the locales.
+**(15) Set the locales.**
 ```
 # nano /etc/locale.conf
 ```
