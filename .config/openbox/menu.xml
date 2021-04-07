@@ -51,12 +51,6 @@
 		</action>
 	</item>
 	<separator/>
-	<item label="Mount kontrakurs">
-		<action name="Execute">
-			<command>sshfs mkn@kontrakurs.org:/var/www/html/kontrakurs /home/mkn/Documents/kontrakurs</command>
-		</action>
-	</item>
-	<separator/>
   	<menu id="exit-menu"/>
 </menu>
 

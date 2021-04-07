@@ -34,7 +34,7 @@ alias ls='ls -lah --color=auto'
 # pacman
 alias syy='sudo pacman -Syy'
 alias syu='sudo pacman -Syu'
-alias qqentt="pacman -Qqentt | grep -ve 'base' -ve '$(pacman -Qqg base-devel)'"
+alias rcns='sudo pacman -Rcns'
 
 # dotfiles
 alias config='/usr/bin/git --git-dir=/home/mkn/.cfg/ --work-tree=/home/mkn/'

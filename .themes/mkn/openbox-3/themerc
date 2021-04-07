@@ -1,5 +1,5 @@
 # Window geometry
-border.width: 1
+border.width: 0
 padding.width: 0
 
 window.client.padding.width: 0
