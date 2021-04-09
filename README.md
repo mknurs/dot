@@ -660,10 +660,6 @@ pipewire-alsa
 pipewire-pulse
 pamixer
 
-# bluetooth
-bluez
-bluez-utils
-
 # desktop
 picom
 openbox
@@ -782,7 +778,6 @@ tlp
 
 # laptop (foreign)
 thinkfan
-bcm20702a1-firmware
 
 # theming
 gnome-themes-extra
