@@ -3,4 +3,4 @@
 
 vol=$(pamixer --get-volume-human)
 
-echo "$vol"
+echo "vol: $vol"

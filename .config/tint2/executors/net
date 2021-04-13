@@ -2,7 +2,7 @@
 # Echoes the connected SSID.
 
 if [[ $(iw wlan0 link | awk '/SSID/{print $2}') == "" ]]; then
-	echo "*"
+	echo "net: *"
 else
-	echo "$(iw wlan0 link | awk '/SSID/{print $2}')"
+	echo "net: $(iw wlan0 link | awk '/SSID/{print $2}')"
 fi

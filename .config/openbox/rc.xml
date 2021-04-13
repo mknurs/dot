@@ -783,10 +783,7 @@
 	<applications>
 		<application type="normal" class="*">
 			<decor>no</decor>
-			<size>
-				<height>100%</height>
-				<width>50%</width>
-			</size>
+			<maximized>yes</maximized>
 		</application>
 	</applications>
 </openbox_config>

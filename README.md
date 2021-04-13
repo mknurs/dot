@@ -778,6 +778,7 @@ tlp
 
 # laptop (foreign)
 thinkfan
+bcm20702a1-firmware
 
 # theming
 gnome-themes-extra
