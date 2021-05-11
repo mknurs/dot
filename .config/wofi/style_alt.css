@@ -1,0 +1,46 @@
+* {
+    border-radius: 0;
+    border: 0px;
+    outline: none;
+    transition: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+window {
+	border: 1px solid #eeeeee;
+	border-radius: 0;
+	color: #eeeeee;
+	background-color: #333333;
+	font-family: "DejaVu Sans 10";
+}
+#input {
+	visibility: hidden;
+	display: none !important;
+	height: 0 !important;
+	color: rgba(0,0,0,0);
+	background-color: rgba(0,0,0,0);
+	border: 1px solid #eeeeee;
+	border-radius: 0;
+}
+#input image {
+	color: #eeeeee;
+}
+#input:focus {
+	display: none;
+	outline: 0 !important;
+	border-radius: 0;
+	outline: none;
+	color: #eeeeee;
+}
+
+#scroll {
+	display: none;
+}
+
+#entry:selected {
+	color: #333333;
+	background-color: #eeeeee;
+}
+#text:selected {
+	color: #333333;
+}

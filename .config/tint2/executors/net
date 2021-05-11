@@ -1,8 +1,8 @@
 #!/bin/sh
 # Echoes the connected SSID.
 
-if [[ $(iw wlan0 link | awk '/SSID/{print $2}') == "" ]]; then
+if [[ $(iw wlan0 link | awk '/SSID/{print substr($2, 1, 3)}') == "" ]]; then
 	echo "net: *"
 else
-	echo "net: $(iw wlan0 link | awk '/SSID/{print $2}')"
+	echo "net: $(iw wlan0 link | awk '/SSID/{print substr($2, 1, 3)}')"
 fi

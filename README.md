@@ -771,6 +771,9 @@ texlive-core
 # office
 libreoffice-fresh-sl
 
+# remote
+remmina
+
 # laptop
 acpi
 acpi_call

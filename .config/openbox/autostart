@@ -1,17 +1,22 @@
-# Policy kit
-lxpolkit &
+# Desktop background
+nitrogen --restore &
+sleep 1 &
 
 # Compositor
 picom -b &
+sleep 1 &
 
-# Desktop background
-nitrogen --restore &
+# Policy kit
+lxpolkit &
+sleep 1 &
 
 # Panel
 tint2 -c ~/.config/tint2/tint2rc &
+sleep 1 &
 
 # Notifications
 dunst &
+sleep 1 &
 
 # Screen temperature
 redshift &
